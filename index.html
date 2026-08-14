@@ -135,12 +135,27 @@ nav{
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .hero-card .tux{font-size:58px;text-align:center;display:block;margin-bottom:8px;filter:drop-shadow(0 8px 20px rgba(34,211,238,.3))}
 .hero-card .hc-title{font-weight:800;font-size:18px;text-align:center}
-.hero-card .hc-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:18px}
-.mock-bar{height:14px;border-radius:8px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:10px}
-.mock-bar i{display:block;height:100%;border-radius:8px;background:var(--grad)}
-.mock-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
-.mock-pills{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.mock-pills span{font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:999px;background:var(--card2);border:1px solid var(--border);color:var(--cyan)}
+.hero-card .hc-sub{text-align:center;color:var(--muted);font-size:13px;margin-bottom:12px}
+.hc-badge{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  font-size:12px;font-weight:800;color:#bff6d9;letter-spacing:.02em;
+  background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.35);
+  padding:7px 14px;border-radius:999px;margin:0 auto 16px;width:max-content;
+}
+.hc-done{list-style:none;margin-top:2px}
+.hc-done li{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:13px;font-weight:600;color:var(--text);
+  padding:8px 2px;border-bottom:1px dashed rgba(255,255,255,.08);
+}
+.hc-done li:last-child{border-bottom:none}
+.hc-done li::before{
+  content:"✓";flex-shrink:0;color:var(--emerald);
+  width:17px;height:17px;margin-top:1px;display:grid;place-items:center;
+  font-size:10px;font-weight:900;border-radius:50%;
+  background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.4);
+}
+.hc-done b{color:var(--emerald)}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-visual{max-width:420px;margin:0 auto}}
 
 /* ---------- Marquee trust ---------- */
@@ -283,45 +298,6 @@ footer .heart{color:var(--rose)}
 /* ---------- Reveal ---------- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
-
-/* ---------- Brochure (print only) ---------- */
-#brochure{display:none}
-@media print{
-  body{background:#fff;color:#111}
-  body > *:not(#brochure){display:none !important}
-  #brochure{
-    display:block !important;background:#fff;color:#111;
-    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,sans-serif;
-    padding:0;line-height:1.5;
-  }
-  @page{margin:12mm}
-  #brochure .br-head{
-    background:linear-gradient(135deg,#0a1122,#101a38);color:#fff;border-radius:14px;
-    padding:26px 30px;display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;
-  }
-  #brochure .br-head h1{font-size:22px;margin:4px 0 2px}
-  #brochure .br-head .sub-t{font-size:12px;opacity:.75}
-  #brochure .br-price{font-size:20px;font-weight:800;color:#ffd166}
-  #brochure h2{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:#8b5cf6;border-bottom:2px solid #e6e8f0;padding-bottom:6px;margin:24px 0 12px}
-  #brochure table{width:100%;border-collapse:collapse;font-size:12.5px;color:#111}
-  #brochure th,#brochure td{border:1px solid #d4d7e0;padding:8px 10px;text-align:left}
-  #brochure th{background:#f1f2f7}
-  #brochure .br-note{font-size:11px;color:#777;margin-top:14px;font-style:italic}
-  #brochure .br-card{border:1px solid #e2e4ee;border-radius:12px;padding:14px 16px;margin-bottom:12px}
-  #brochure .br-card h3{font-size:14.5px;margin-bottom:4px}
-  #brochure .br-card p{font-size:12px;color:#333}
-  #brochure .br-card ul{margin:6px 0 0;padding-left:18px}
-  #brochure .br-card li{font-size:11.5px;margin-bottom:2px}
-  #brochure .br-tag{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:99px;margin-bottom:6px}
-  #brochure .br-contact{
-    margin-top:26px;background:#0a1122;color:#fff;border-radius:14px;padding:20px 26px;
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-  }
-  #brochure .br-contact .wa-txt{font-weight:800;color:#2ee76a;font-size:16px}
-  #brochure .br-check li{font-size:12.5px;margin-bottom:6px}
-  #brochure .stars-p{color:#f59e0b;letter-spacing:2px}
-  .no-print{display:none !important}
-}
 </style>
 </head>
 <body>
@@ -397,14 +373,15 @@ footer .heart{color:var(--rose)}
       <div class="hero-card">
         <span class="tux">🐧</span>
         <div class="hc-title" data-i18n="cardTitle">Status Instalasi</div>
-        <div class="hc-sub" data-i18n="cardSub">Laptop kamu — Live</div>
-        <div class="mock-row"><span data-i18n="cardRow1">Menginstal MX Linux</span><span>48%</span></div>
-        <div class="mock-bar"><i style="width:48%"></i></div>
-        <div class="mock-row"><span data-i18n="cardRow2">Driver &amp; Wi-Fi</span><span data-i18n="cardRow2S">Berikutnya</span></div>
-        <div class="mock-bar"><i style="width:12%;background:var(--cyan)"></i></div>
-        <div class="mock-pills">
-          <span>🖥️ XFCE</span><span>📦 MX 23</span><span>🔒 Secure Boot</span><span>⚡ 100% Debian</span>
-        </div>
+        <div class="hc-sub" data-i18n="cardSub">Laptop Asus A416J Bapak</div>
+        <div class="hc-badge"><span>✅</span><span data-i18n="cardBadge">Officially Completed 100%</span></div>
+        <ul class="hc-done">
+          <li><span data-i18n="cardDone1">MX Linux 24 Final</span></li>
+          <li><span data-i18n="cardDone2">Drivers &amp; Wi-Fi Optimized</span></li>
+          <li><span data-i18n="cardDone3">Zotero &amp; Obsidian Portable Ready</span></li>
+          <li><span data-i18n="cardDone4">Non-Flatpak RAM 4GB Spec</span></li>
+          <li><span data-i18n="cardDone5">100% Debian Stable</span></li>
+        </ul>
       </div>
     </div>
   </div>
@@ -534,9 +511,10 @@ footer .heart{color:var(--rose)}
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
 </a>
 
-<!-- ================= BROCHURE (print only) ================= -->
-<div id="brochure"></div>
+<!-- ================= BROCHURE (generated via jsPDF on download) ================= -->
 
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
 <script>
 /* ============================================================
    CONFIG — ⚠️ GANTI NOMOR WHATSAPP KAMU DI SINI
@@ -561,8 +539,11 @@ const I18N = {
     heroCtaWa: "Konsultasi Gratis via WhatsApp",
     heroCtaPdf: "Download Brochure PDF",
     trust1: "Rapi & Teruji", trust2: "Support 7 Hari", trust3: "Garansi Hasil", trust4: "100+ Laptop Dipasang",
-    cardTitle: "Status Instalasi", cardSub: "Laptop kamu — Live",
-    cardRow1: "Menginstal MX Linux", cardRow2: "Driver & Wi-Fi", cardRow2S: "Berikutnya",
+    cardTitle: "Status Instalasi", cardSub: "Laptop Asus A416J Bapak",
+    cardBadge: "Officially Completed 100%",
+    cardDone1: "MX Linux 24 Final", cardDone2: "Drivers & Wi-Fi Optimized",
+    cardDone3: "Zotero & Obsidian Portable Ready", cardDone4: "Non-Flatpak RAM 4GB Spec",
+    cardDone5: "100% Debian Stable",
     eyebrowServices: "Paket Layanan",
     servicesTitle: "Apa yang <span class='g'>Kamu Dapatkan</span>?",
     servicesSub: "Satu harga, lengkap — dari nol sampai laptop siap dipakai harian.",
@@ -577,6 +558,7 @@ const I18N = {
     eyebrowDistros: "Pilihan Distro",
     distrosTitle: "Pilih Distro <span class='g'>Favoritmu</span>",
     distrosSub: "Kami rekomendasikan yang paling cocok dengan spesifikasi laptopmu.",
+    scoreLbl: "Nilai",
     distros: [
       { name: "MX Linux", icon: "🐧", color: "#00bfa5", tag: "Rekomendasi Laptop Tua", tagBg: "#00bfa5",
         tagline: "Ringan & Debian murni.", desc: "Sempurna untuk RAM 8GB dan laptop lawas. Cepat, stabil, dan hemat daya.",
@@ -646,26 +628,53 @@ const I18N = {
     footerLine: "Jasa instalasi Linux profesional untuk semua orang.",
     footerMade: "Dibuat dengan", footerOn: "di Debian.",
     waMsg: "Halo Kaka, saya mau konsultasi jasa instalasi Linux 50rb",
-    br: {
-      title: "Linux 50K — Brosur Layanan",
-      sub: "Jasa Instalasi Linux Profesional · Hanya Rp 50.000",
-      price: "Rp 50.000",
-      specsH: "Matriks Spesifikasi Hardware",
-      specsNote: "Hampir semua laptop kompatibel. Flashdisk 32GB USB 3.0 wajib untuk media installer.",
-      distrosH: "Pilihan Distribusi Linux",
-      desH: "Perbandingan Desktop Environment",
-      checkH: "Checklist Persiapan",
-      checkNote: "Backup data penting wajib dilakukan sebelum instalasi.",
-      contactH: "Hubungi Kami",
-      contactLine: "Konsultasi gratis · Instalasi cepat · Support 7 hari",
-      pdfTip: "Tips: di jendela print, pilih 'Save as PDF' untuk menyimpan brosur ini.",
-      thPart: "Komponen", thMin: "Minimal", thRec: "Rekomendasi",
-      colDistro: "Distro", colDesc: "Deskripsi", colScore: "Nilai",
-      colDe: "Desktop", colPerf: "Performa", colLooks: "Tampilan", colRam: "RAM",
-      item1: "Laptop & charger (baterai penuh)",
-      item2: "Flashdisk 32 GB USB 3.0 kosong",
-      item3: "Backup data penting (foto, dokumen)",
-      item4: "Luangkan 30–60 menit waktu"
+    pdf: {
+      docTag: "LINUX 50K · DOKUMEN RESMI LAYANAN · ID",
+      title: "Brosur Resmi Layanan Instalasi Linux",
+      subtitle: "Paket Khusus Suster, Dosen & Pegawai",
+      price: "Rp 50.000 / €3.00 (Promo)",
+      hwTitle: "1. Matriks Kebutuhan Hardware",
+      hwCols: ["Komponen", "Minimal", "Rekomendasi"],
+      hwRows: [
+        ["Prosesor (CPU)", "Intel Core i3 (dual-core, 2.0 GHz+)", "Intel Core i5 / i7 (quad-core+)"],
+        ["Memori (RAM)", "4 GB (desktop XFCE ringan)", "8–16 GB DDR4"],
+        ["Penyimpanan", "120 GB HDD", "256 GB+ SSD (NVMe disarankan)"],
+        ["Grafis (GPU)", "Intel Integrated", "NVIDIA / AMD (opsional, driver terbuka)"],
+        ["Flashdisk", "32 GB USB 3.0", "32 GB USB 3.0 (media penyelamat)"],
+        ["Wi-Fi / Nirkabel", "802.11n", "802.11ac / 802.11ax"],
+        ["Firmware", "UEFI / Legacy BIOS", "UEFI dengan Secure Boot"]
+      ],
+      distroTitle: "2. Keunggulan Distribusi Linux",
+      distroCards: [
+        { name: "MX Linux 24 (Debian Trixie)", body: "Basis Debian 13 Trixie Stable murni dengan sentuhan antiX. Semua paket terpasang sebagai build native (non-Flatpak) sehingga RAM lebih hemat di laptop 4 GB dan aplikasi terbuka lebih cepat. Zotero & Obsidian dipasang sebagai aplikasi portable/native — bukan kontainer Flatpak — demi performa yang lebih responsif. MX Tools (Snapshot, USB Formatter, Repo Manager) memudahkan perawatan sistem." },
+        { name: "Linux Mint", body: "Berbasis Ubuntu LTS dengan desktop Cinnamon. Update Manager terintegrasi dengan snapshot Timeshift untuk rollback, dan Driver Manager memasang driver GPU/Wi-Fi proprietary sekali klik. Sangat ramah pemula namun tetap stabil." },
+        { name: "Zorin OS", body: "Basis Ubuntu LTS dengan tata letak desktop mirip Windows, sehingga transisi terasa alami. Zorin Connect menghubungkan laptop ke HP Android. Edisi Pro opsional menambah layout dan tema untuk pengalaman harian yang lebih halus." }
+      ],
+      prepTitle: "3. Checklist Persiapan",
+      prepIntro: "Siapkan hal berikut sebelum hari instalasi:",
+      prepItems: [
+        "Laptop dan charger (baterai terisi penuh)",
+        "Flashdisk kosong 32 GB USB 3.0 — dipakai sebagai media penyelamat/recovery",
+        "HDD eksternal untuk backup data menyeluruh",
+        "Luangkan 30–60 menit agar proses tidak terburu-buru"
+      ],
+      adminTitle: "4. Keahlian Administrasi Sistem",
+      adminParas: "Setiap instalasi mengikuti filosofi Debian Stable: basis paket yang dibekukan dan teruji dengan backport keamanan — fondasi yang sama dipakai server produksi di seluruh dunia. Sistem dituning agar hemat memori: desktop ringan (XFCE/MATE), aplikasi native non-Flatpak, dan tuning kernel (zram, swappiness) sehingga laptop 4 GB pun tetap responsif.",
+      adminBullets: [
+        "Basis Debian Stable — stabilitas dan keamanan maksimal",
+        "Optimasi RAM — paket native, zram, swappiness yang diatur",
+        "Support pasca-instalasi — 7 hari konsultasi gratis via WhatsApp (update, backup, kustomisasi)"
+      ],
+      priceTitle: "5. Harga Spesial & Metode Pembayaran",
+      priceIntro: "Satu instalasi, semua sudah termasuk. Bayar hanya setelah instalasi berhasil.",
+      pricePrice: "Rp 50.000 / €3.00 — Promo",
+      priceMethodsTitle: "Metode Pembayaran:",
+      priceMethods: [
+        "BNI — No. Rekening: 306308543 a/n: [NAMA ANDA]",
+        "ShopeePay / OVO — 081338445874 (silakan konfirmasi via WhatsApp)"
+      ],
+      priceNote: "QRIS juga tersedia. Hubungi kami di WhatsApp untuk konfirmasi slot.",
+      footer: "Linux 50K · Jasa instalasi Linux profesional"
     }
   },
 
@@ -683,8 +692,11 @@ const I18N = {
     heroCtaWa: "Free Consultation on WhatsApp",
     heroCtaPdf: "Download Brochure PDF",
     trust1: "Clean & Tested", trust2: "7-Day Support", trust3: "Result Guarantee", trust4: "100+ Laptops Installed",
-    cardTitle: "Installation Status", cardSub: "Your laptop — Live",
-    cardRow1: "Installing MX Linux", cardRow2: "Drivers & Wi-Fi", cardRow2S: "Next",
+    cardTitle: "Installation Status", cardSub: "Laptop Asus A416J Bapak",
+    cardBadge: "Officially Completed 100%",
+    cardDone1: "MX Linux 24 Final", cardDone2: "Drivers & Wi-Fi Optimized",
+    cardDone3: "Zotero & Obsidian Portable Ready", cardDone4: "Non-Flatpak RAM 4GB Spec",
+    cardDone5: "100% Debian Stable",
     eyebrowServices: "Service Package",
     servicesTitle: "What <span class='g'>You Get</span>?",
     servicesSub: "One price, complete — from zero to a daily-ready laptop.",
@@ -699,6 +711,7 @@ const I18N = {
     eyebrowDistros: "Distro Choices",
     distrosTitle: "Choose Your <span class='g'>Favorite Distro</span>",
     distrosSub: "We recommend the best fit for your laptop specs.",
+    scoreLbl: "Rating",
     distros: [
       { name: "MX Linux", icon: "🐧", color: "#00bfa5", tag: "Best for Old Laptops", tagBg: "#00bfa5",
         tagline: "Light & pure Debian.", desc: "Perfect for 8GB RAM and older laptops. Fast, stable, power-efficient.",
@@ -768,26 +781,53 @@ const I18N = {
     footerLine: "Professional Linux installation service for everyone.",
     footerMade: "Made with", footerOn: "on Debian.",
     waMsg: "Hello, I would like to consult about the 50k Linux installation service",
-    br: {
-      title: "Linux 50K — Service Brochure",
-      sub: "Professional Linux Installation · Only IDR 50.000",
-      price: "IDR 50.000",
-      specsH: "Hardware Specs Matrix",
-      specsNote: "Almost any laptop is compatible. A 32GB USB 3.0 flash drive is required for the installer media.",
-      distrosH: "Linux Distribution Choices",
-      desH: "Desktop Environment Comparison",
-      checkH: "Preparation Checklist",
-      checkNote: "Backing up important data is required before installation.",
-      contactH: "Contact Us",
-      contactLine: "Free consultation · Fast install · 7-day support",
-      pdfTip: "Tip: in the print dialog, choose 'Save as PDF' to download this brochure.",
-      thPart: "Component", thMin: "Minimum", thRec: "Recommended",
-      colDistro: "Distro", colDesc: "Description", colScore: "Rating",
-      colDe: "Desktop", colPerf: "Performance", colLooks: "Looks", colRam: "RAM",
-      item1: "Laptop & charger (full battery)",
-      item2: "Empty 32 GB USB 3.0 flash drive",
-      item3: "Backup of important data (photos, docs)",
-      item4: "Set aside 30–60 minutes"
+    pdf: {
+      docTag: "LINUX 50K · OFFICIAL SERVICE DOCUMENT · EN",
+      title: "Official Linux Installation Service Brochure",
+      subtitle: "Special Package for Suster, Dosen & Pegawai (Nurses, Lecturers & Employees)",
+      price: "Rp 50.000 / €3.00 (Promo)",
+      hwTitle: "1. Hardware Requirements Matrix",
+      hwCols: ["Component", "Minimum", "Recommended"],
+      hwRows: [
+        ["Processor (CPU)", "Intel Core i3 (dual-core, 2.0 GHz+)", "Intel Core i5 / i7 (quad-core+)"],
+        ["Memory (RAM)", "4 GB (light XFCE desktop)", "8–16 GB DDR4"],
+        ["Storage", "120 GB HDD", "256 GB+ SSD (NVMe preferred)"],
+        ["Graphics (GPU)", "Intel Integrated", "NVIDIA / AMD (optional, open drivers)"],
+        ["Flash Drive", "32 GB USB 3.0", "32 GB USB 3.0 (rescue media)"],
+        ["Wireless (Wi-Fi)", "802.11n", "802.11ac / 802.11ax"],
+        ["Firmware", "UEFI / Legacy BIOS", "UEFI with Secure Boot"]
+      ],
+      distroTitle: "2. Linux Distribution Benefits",
+      distroCards: [
+        { name: "MX Linux 24 (Debian Trixie)", body: "Pure Debian 13 Trixie Stable base with antiX enhancements. All packages ship as native (non-Flatpak) builds, which lowers RAM usage on 4 GB machines and speeds up app launch. Zotero and Obsidian are installed as portable/native binaries — not Flatpak containers — for snappier performance. MX Tools (Snapshot, USB Formatter, Repo Manager) make the system easy to maintain." },
+        { name: "Linux Mint", body: "Built on Ubuntu LTS with the Cinnamon desktop. Update Manager integrates Timeshift system snapshots for rollbacks, and the Driver Manager installs proprietary GPU and Wi-Fi drivers in one click. Very beginner-friendly while still highly stable." },
+        { name: "Zorin OS", body: "Ubuntu LTS base with a Windows-like desktop layout, so the transition feels natural. Zorin Connect links the laptop to an Android phone. The optional Pro edition adds extra layouts and themes for a more polished daily experience." }
+      ],
+      prepTitle: "3. Preparation Checklist",
+      prepIntro: "Please prepare these items before installation day:",
+      prepItems: [
+        "Laptop and charger (battery fully charged)",
+        "Empty 32 GB USB 3.0 flash drive — used as rescue/recovery media",
+        "External HDD for a full data backup",
+        "30–60 minutes of free time for a calm, unhurried install"
+      ],
+      adminTitle: "4. System Administration Expertise",
+      adminParas: "Every installation follows the Debian Stable philosophy: a frozen, heavily tested package base with security backports — the same foundation that powers countless production servers. Systems are tuned for low memory use: a lightweight desktop (XFCE/MATE), native non-Flatpak applications, and kernel tuning (zram, swappiness) so even 4 GB laptops stay responsive.",
+      adminBullets: [
+        "Debian Stable base — maximum stability and security",
+        "RAM optimization — native packages, zram, tuned swappiness",
+        "Post-installation support — 7 days of free guidance via WhatsApp (updates, backup, customizations)"
+      ],
+      priceTitle: "5. Harga Spesial & Metode Pembayaran (Special Price & Payment Methods)",
+      priceIntro: "One installation, all inclusive. Pay only after a successful installation.",
+      pricePrice: "Rp 50.000 / €3.00 — Promo",
+      priceMethodsTitle: "Payment Methods:",
+      priceMethods: [
+        "BNI — Account No: 306308543 a/n: [YOUR NAME]",
+        "ShopeePay / OVO — 081338445874 (please confirm via WhatsApp)"
+      ],
+      priceNote: "QRIS also available. Contact us on WhatsApp to confirm the slot.",
+      footer: "Linux 50K · Professional Linux installation"
     }
   },
 
@@ -805,8 +845,11 @@ const I18N = {
     heroCtaWa: "Kostenlose Beratung via WhatsApp",
     heroCtaPdf: "Broschüre als PDF herunterladen",
     trust1: "Sauber & getestet", trust2: "7-Tage-Support", trust3: "Ergebnis-Garantie", trust4: "100+ Laptops installiert",
-    cardTitle: "Installationsstatus", cardSub: "Dein Laptop — Live",
-    cardRow1: "MX Linux wird installiert", cardRow2: "Treiber & WLAN", cardRow2S: "Als Nächstes",
+    cardTitle: "Installationsstatus", cardSub: "Laptop Asus A416J Bapak",
+    cardBadge: "Officially Completed 100%",
+    cardDone1: "MX Linux 24 Final", cardDone2: "Treiber & Wi-Fi optimiert",
+    cardDone3: "Zotero & Obsidian Portable bereit", cardDone4: "Non-Flatpak RAM-4GB-Spezifikation",
+    cardDone5: "100% Debian Stable",
     eyebrowServices: "Leistungspaket",
     servicesTitle: "Was <span class='g'>Du bekommst</span>?",
     servicesSub: "Ein Preis, alles dabei — vom Nullpunkt bis zum einsatzbereiten Laptop.",
@@ -821,6 +864,7 @@ const I18N = {
     eyebrowDistros: "Distro-Wahl",
     distrosTitle: "Wähle deine <span class='g'>Lieblings-Distro</span>",
     distrosSub: "Wir empfehlen, was am besten zu deinen Laptop-Specs passt.",
+    scoreLbl: "Bewertung",
     distros: [
       { name: "MX Linux", icon: "🐧", color: "#00bfa5", tag: "Bestens für alte Laptops", tagBg: "#00bfa5",
         tagline: "Leicht & pur Debian.", desc: "Perfekt für 8 GB RAM und ältere Laptops. Schnell, stabil und stromsparend.",
@@ -890,26 +934,53 @@ const I18N = {
     footerLine: "Professioneller Linux-Installationsservice für alle.",
     footerMade: "Gemacht mit", footerOn: "auf Debian.",
     waMsg: "Hallo, ich möchte mich zum Linux-Installationsservice für 50.000 IDR beraten lassen",
-    br: {
-      title: "Linux 50K — Service-Broschüre",
-      sub: "Professionelle Linux-Installation · Nur 50.000 IDR",
-      price: "50.000 IDR",
-      specsH: "Hardware-Spezifikationsmatrix",
-      specsNote: "Fast jeder Laptop ist kompatibel. Ein 32-GB-USB-3.0-Stick ist für den Installer erforderlich.",
-      distrosH: "Linux-Distributionsauswahl",
-      desH: "Vergleich der Desktop-Umgebungen",
-      checkH: "Vorbereitungs-Checkliste",
-      checkNote: "Ein Backup wichtiger Daten ist vor der Installation erforderlich.",
-      contactH: "Kontaktiere uns",
-      contactLine: "Kostenlose Beratung · Schnelle Installation · 7-Tage-Support",
-      pdfTip: "Tipp: Wähle im Druckdialog 'Als PDF speichern', um diese Broschüre herunterzuladen.",
-      thPart: "Komponente", thMin: "Minimum", thRec: "Empfohlen",
-      colDistro: "Distro", colDesc: "Beschreibung", colScore: "Bewertung",
-      colDe: "Desktop", colPerf: "Leistung", colLooks: "Optik", colRam: "RAM",
-      item1: "Laptop & Ladegerät (voller Akku)",
-      item2: "Leerer 32-GB-USB-3.0-Stick",
-      item3: "Backup wichtiger Daten (Fotos, Dokumente)",
-      item4: "30–60 Minuten einplanen"
+    pdf: {
+      docTag: "LINUX 50K · OFFIZIELLES SERVICE-DOKUMENT · DE",
+      title: "Offizielles Service-Broschüre für Linux-Installation",
+      subtitle: "Spezial-Angebot für Suster, Dozenten & Angestellte",
+      price: "50.000 IDR / €3,00 (Aktion)",
+      hwTitle: "1. Hardware-Anforderungen (Übersicht)",
+      hwCols: ["Komponente", "Minimum", "Empfohlen"],
+      hwRows: [
+        ["Prozessor (CPU)", "Intel Core i3 (Dual-Core, 2,0 GHz+)", "Intel Core i5 / i7 (Quad-Core+)"],
+        ["Arbeitsspeicher (RAM)", "4 GB (leichtes XFCE-Desktop)", "8–16 GB DDR4"],
+        ["Speicher", "120 GB HDD", "256 GB+ SSD (NVMe bevorzugt)"],
+        ["Grafik (GPU)", "Intel Integrated", "NVIDIA / AMD (optional, offene Treiber)"],
+        ["USB-Stick", "32 GB USB 3.0", "32 GB USB 3.0 (Rettungsmedium)"],
+        ["WLAN", "802.11n", "802.11ac / 802.11ax"],
+        ["Firmware", "UEFI / Legacy BIOS", "UEFI mit Secure Boot"]
+      ],
+      distroTitle: "2. Vorteile der Linux-Distributionen",
+      distroCards: [
+        { name: "MX Linux 24 (Debian Trixie)", body: "Reine Debian-13-Trixie-Stable-Basis mit antiX-Verbesserungen. Alle Pakete werden als native Builds (nicht-Flatpak) installiert, was den RAM-Verbrauch auf 4-GB-Geräten senkt und den App-Start beschleunigt. Zotero und Obsidian werden als portable/native Binaries installiert — nicht als Flatpak-Container — für flinkere Leistung. MX Tools (Snapshot, USB-Formatter, Repo-Manager) machen die Wartung einfach." },
+        { name: "Linux Mint", body: "Basiert auf Ubuntu LTS mit der Cinnamon-Oberfläche. Der Update Manager integriert Timeshift-System-Snapshots für Rollbacks, und der Driver Manager installiert proprietäre GPU- und WLAN-Treiber per Klick. Sehr anfängerfreundlich und dennoch äußerst stabil." },
+        { name: "Zorin OS", body: "Ubuntu-LTS-Basis mit einer Windows-ähnlichen Desktop-Oberfläche — der Umstieg fällt dadurch leicht. Zorin Connect verbindet den Laptop mit einem Android-Handy. Die optionale Pro-Edition fügt weitere Layouts und Themes für ein eleganteres Alltagserlebnis hinzu." }
+      ],
+      prepTitle: "3. Vorbereitungs-Checkliste",
+      prepIntro: "Bitte bereite folgende Dinge vor dem Installationstag vor:",
+      prepItems: [
+        "Laptop und Ladegerät (Akku vollständig aufgeladen)",
+        "Leerer 32-GB-USB-3.0-Stick — wird als Rettungs-/Recovery-Medium genutzt",
+        "Externe HDD für eine vollständige Datensicherung",
+        "30–60 Minuten Zeit für eine ruhige, ungehetzte Installation einplanen"
+      ],
+      adminTitle: "4. Systemadministrations-Kompetenz",
+      adminParas: "Jede Installation folgt der Debian-Stable-Philosophie: einer eingefrorenen, intensiv getesteten Paketbasis mit Sicherheits-Backports — dieselbe Grundlage, die unzählige Produktionsserver antreibt. Die Systeme werden auf geringen Speicherverbrauch optimiert: eine leichte Oberfläche (XFCE/MATE), native Nicht-Flatpak-Anwendungen und Kernel-Tuning (zram, Swappiness), sodass selbst 4-GB-Laptops reaktionsschnell bleiben.",
+      adminBullets: [
+        "Debian-Stable-Basis — maximale Stabilität und Sicherheit",
+        "RAM-Optimierung — native Pakete, zram, eingestellte Swappiness",
+        "Support nach der Installation — 7 Tage kostenlose Beratung via WhatsApp (Updates, Backups, Anpassungen)"
+      ],
+      priceTitle: "5. Spezial-Angebot & Zahlungsmethoden",
+      priceIntro: "Eine Installation, alles inklusive. Zahlung erst nach erfolgreicher Installation.",
+      pricePrice: "50.000 IDR / €3,00 — Aktion",
+      priceMethodsTitle: "Zahlungsmethoden:",
+      priceMethods: [
+        "BNI — Kontonummer: 306308543 a/n: [IHR NAME]",
+        "ShopeePay / OVO — 081338445874 (bitte per WhatsApp bestätigen)"
+      ],
+      priceNote: "QRIS ist ebenfalls möglich. Kontaktiere uns per WhatsApp zur Terminbestätigung.",
+      footer: "Linux 50K · Professionelle Linux-Installation"
     }
   }
 };
@@ -958,7 +1029,7 @@ function renderDistros(){
       <p style="font-weight:700;color:var(--text);margin-bottom:4px">${d.tagline}</p>
       <p>${d.desc}</p>
       <ul>${d.pros.map(p => `<li>${p}</li>`).join("")}</ul>
-      <div class="score"><b>${t.br.colScore}</b><span style="font-size:22px;font-weight:800;color:${d.color}">${d.score}</span></div>
+      <div class="score"><b>${t.scoreLbl}</b><span style="font-size:22px;font-weight:800;color:${d.color}">${d.score}</span></div>
     </div>`).join("");
 }
 function renderSpecs(){
@@ -1036,72 +1107,186 @@ function renderStaticI18n(){
   if(!track.dataset.dup){ track.innerHTML += track.innerHTML; track.dataset.dup = "1"; }
 }
 
-/* ---------- brochure (print PDF) ---------- */
-function starsPlain(n){
-  let out = "";
-  for(let i=1;i<=5;i++){ out += (n >= i) ? "★" : (n >= i-0.5 ? "⯨" : "☆"); }
-  return out;
+/* ---------- brochure PDF (jsPDF — academic / official layout) ---------- */
+const PDF_M = 48;            // page margin (pt)
+const PDF_W = 595.28;        // A4 width (pt)
+const PDF_H = 841.89;        // A4 height (pt)
+const PDF_CW = PDF_W - PDF_M * 2;
+
+function pdfPageBreak(doc, y, need){
+  if(y + need > PDF_H - PDF_M){ doc.addPage(); return PDF_M + 10; }
+  return y;
 }
-function buildBrochure(){
-  const t = I18N[currentLang];
-  const b = t.br;
-  const ph = PHONE === "YOUR_PHONE_NUMBER_HERE" ? "6281234567890" : PHONE;
-  const specsRows = t.specs.map(r =>
-    `<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("");
-  const distroCards = t.distros.map(d =>
-    `<div class="br-card">
-       <span class="br-tag" style="background:${d.tagBg}1a;color:${d.tagBg};border:1px solid ${d.tagBg}66">${d.tag}</span>
-       <h3>${d.icon} ${d.name} <span style="float:right;font-size:16px">${d.score}</span></h3>
-       <p>${d.tagline} ${d.desc}</p>
-       <ul>${d.pros.map(p => `<li>${p}</li>`).join("")}</ul>
-     </div>`).join("");
-  const deRows = t.des.map(d =>
-    `<tr><td><b>${d.name}</b></td><td>${starsPlain(d.perf)}</td><td>${starsPlain(d.looks)}</td><td>${d.ram}</td></tr>`).join("");
-  const checkItems = b.item1 && [b.item1,b.item2,b.item3,b.item4].map(i => `<li>☑ ${i}</li>`).join("");
+function pdfSecTitle(doc, text, y){
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(10.5);
+  doc.setTextColor(15, 23, 42);
+  doc.text(doc.splitTextToSize(text, PDF_CW), PDF_M, y);
+  doc.setDrawColor(148, 163, 184);
+  doc.setLineWidth(0.6);
+  doc.line(PDF_M, y + 4, PDF_M + 220, y + 4);
+}
+function renderPdfPart(doc, lang, isFirst){
+  const P = I18N[lang].pdf;
+  let y = isFirst ? PDF_M : PDF_M + 14;
+  if(!isFirst) doc.addPage();
 
-  $("#brochure").innerHTML = `
-    <div class="br-head">
-      <div>
-        <div style="font-size:12px;opacity:.75">🐧 Linux 50K</div>
-        <h1>${b.title}</h1>
-        <div class="sub-t">${b.sub}</div>
-      </div>
-      <div class="br-price">${b.price}</div>
-    </div>
+  doc.setFillColor(15, 23, 42);
+  doc.rect(0, 0, PDF_W, 6, "F");
 
-    <h2>1. ${b.specsH}</h2>
-    <table>
-      <thead><tr><th>${b.thPart}</th><th>${b.thMin}</th><th>${b.thRec}</th></tr></thead>
-      <tbody>${specsRows}</tbody>
-    </table>
-    <div class="br-note">ℹ ${b.specsNote}</div>
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(7);
+  doc.setTextColor(100, 116, 139);
+  doc.text(P.docTag, PDF_M, y);
+  y += 12;
 
-    <h2>2. ${b.distrosH}</h2>
-    ${distroCards}
+  doc.setFont("times", "bold");
+  doc.setFontSize(18);
+  doc.setTextColor(15, 23, 42);
+  const tLines = doc.splitTextToSize(P.title, PDF_CW);
+  doc.text(tLines, PDF_M, y);
+  y += tLines.length * 21 + 4;
 
-    <h2>3. ${b.desH}</h2>
-    <table>
-      <thead><tr><th>${b.colDe}</th><th>${b.colPerf}</th><th>${b.colLooks}</th><th>${b.colRam}</th></tr></thead>
-      <tbody>${deRows}</tbody>
-    </table>
+  doc.setFont("times", "italic");
+  doc.setFontSize(10.5);
+  doc.setTextColor(71, 85, 105);
+  const sLines = doc.splitTextToSize(P.subtitle, PDF_CW);
+  doc.text(sLines, PDF_M, y);
+  y += sLines.length * 13 + 6;
 
-    <h2>4. ${b.checkH}</h2>
-    <div class="br-card"><ul class="br-check">${checkItems}</ul></div>
-    <div class="br-note">⚠ ${b.checkNote}</div>
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(11);
+  doc.setTextColor(22, 163, 74);
+  doc.text(P.price, PDF_M, y);
+  y += 14;
 
-    <div class="br-contact">
-      <div>
-        <div style="font-size:12px;opacity:.75">${b.contactH}</div>
-        <div style="font-weight:800;font-size:17px;margin-top:2px">${t.brandTag}</div>
-        <div style="font-size:12px;opacity:.8">${b.contactLine}</div>
-      </div>
-      <div style="text-align:right">
-        <div class="wa-txt">💬 +${ph}</div>
-        <div style="font-size:11px;opacity:.7">wa.me/${ph}</div>
-      </div>
-    </div>
+  doc.setDrawColor(15, 23, 42);
+  doc.setLineWidth(1.1);
+  doc.line(PDF_M, y, PDF_W - PDF_M, y);
+  y += 26;
 
-    <div class="br-note">${b.pdfTip}</div>`;
+  y = pdfPageBreak(doc, y, 30);
+  pdfSecTitle(doc, P.hwTitle, y);
+  y += 18;
+  doc.autoTable({
+    startY: y,
+    head: [P.hwCols],
+    body: P.hwRows,
+    theme: "grid",
+    styles: { font: "times", fontSize: 8.5, cellPadding: 5, textColor: [51,65,85], lineColor: [148,163,184], lineWidth: 0.4 },
+    headStyles: { fillColor: [15,23,42], textColor: [255,255,255], font: "helvetica", fontStyle: "bold", fontSize: 8.5 },
+    alternateRowStyles: { fillColor: [248,250,252] },
+    margin: { left: PDF_M, right: PDF_M },
+    columnStyles: { 0: { fontStyle: "bold", textColor: [15,23,42] } }
+  });
+  y = doc.lastAutoTable.finalY + 18;
+
+  y = pdfPageBreak(doc, y, 30);
+  pdfSecTitle(doc, P.distroTitle, y);
+  y += 18;
+  P.distroCards.forEach(c => {
+    y = pdfPageBreak(doc, y, 30);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9.5);
+    doc.setTextColor(15, 23, 42);
+    doc.text("▪ " + c.name, PDF_M, y);
+    y += 12;
+    doc.setFont("times", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(51, 65, 85);
+    const lines = doc.splitTextToSize(c.body, PDF_CW);
+    doc.text(lines, PDF_M, y);
+    y += lines.length * 11.5 + 8;
+  });
+
+  y = pdfPageBreak(doc, y, 30);
+  pdfSecTitle(doc, P.prepTitle, y);
+  y += 16;
+  doc.setFont("times", "italic");
+  doc.setFontSize(9);
+  doc.setTextColor(51, 65, 85);
+  doc.text(P.prepIntro, PDF_M, y);
+  y += 12;
+  doc.setFont("times", "normal");
+  P.prepItems.forEach(it => {
+    y = pdfPageBreak(doc, y, 16);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(22, 163, 74);
+    doc.text("✓", PDF_M, y);
+    doc.setFont("times", "normal");
+    doc.setTextColor(51, 65, 85);
+    const lines = doc.splitTextToSize(it, PDF_CW - 16);
+    doc.text(lines, PDF_M + 16, y);
+    y += lines.length * 11.5 + 5;
+  });
+  y += 6;
+
+  y = pdfPageBreak(doc, y, 30);
+  pdfSecTitle(doc, P.adminTitle, y);
+  y += 16;
+  doc.setFont("times", "normal");
+  doc.setFontSize(9);
+  doc.setTextColor(51, 65, 85);
+  const aLines = doc.splitTextToSize(P.adminParas, PDF_CW);
+  doc.text(aLines, PDF_M, y);
+  y += aLines.length * 11.5 + 8;
+  P.adminBullets.forEach(b => {
+    y = pdfPageBreak(doc, y, 16);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(15, 23, 42);
+    doc.text("•", PDF_M, y);
+    doc.setFont("times", "normal");
+    doc.setTextColor(51, 65, 85);
+    const lines = doc.splitTextToSize(b, PDF_CW - 16);
+    doc.text(lines, PDF_M + 16, y);
+    y += lines.length * 11.5 + 4;
+  });
+  y += 8;
+
+  y = pdfPageBreak(doc, y, 30);
+  pdfSecTitle(doc, P.priceTitle, y);
+  y += 16;
+  doc.setFont("times", "italic");
+  doc.setFontSize(9);
+  doc.setTextColor(51, 65, 85);
+  doc.text(P.priceIntro, PDF_M, y);
+  y += 13;
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(13);
+  doc.setTextColor(22, 163, 74);
+  doc.text(P.pricePrice, PDF_M, y);
+  y += 16;
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(9.5);
+  doc.setTextColor(15, 23, 42);
+  doc.text(P.priceMethodsTitle, PDF_M, y);
+  y += 12;
+  doc.setFont("times", "normal");
+  P.priceMethods.forEach(m => {
+    y = pdfPageBreak(doc, y, 16);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9);
+    doc.setTextColor(22, 163, 74);
+    doc.text("◆", PDF_M, y);
+    doc.setFont("times", "normal");
+    doc.setTextColor(51, 65, 85);
+    const lines = doc.splitTextToSize(m, PDF_CW - 16);
+    doc.text(lines, PDF_M + 16, y);
+    y += lines.length * 11.5 + 4;
+  });
+  y += 6;
+  doc.setFont("times", "italic");
+  doc.setFontSize(8.5);
+  doc.setTextColor(100, 116, 139);
+  const nLines = doc.splitTextToSize(P.priceNote, PDF_CW);
+  doc.text(nLines, PDF_M, y);
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(7.5);
+  doc.setTextColor(100, 116, 139);
+  doc.text(P.footer + " · WhatsApp: " + PHONE, PDF_M, PDF_H - 36);
 }
 
 /* ---------- language switching ---------- */
@@ -1123,8 +1308,16 @@ function setLang(lang){
 
 /* ---------- PDF download ---------- */
 function downloadPDF(){
-  buildBrochure();
-  setTimeout(() => window.print(), 60);
+  if(!window.jspdf || !window.jspdf.jsPDF || typeof window.jspdf.jsPDF.prototype.autoTable !== "function"){
+    alert("PDF library could not be loaded. Please check your internet connection and try again.");
+    return;
+  }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: "pt", format: "a4" });
+  const lead = currentLang;
+  const order = [lead].concat(["id", "en", "de"].filter(l => l !== lead));
+  order.forEach((l, i) => renderPdfPart(doc, l, i === 0));
+  doc.save("Linux-50K-Brosur-" + lead.toUpperCase() + ".pdf");
 }
 
 /* ---------- reveal on scroll ---------- */
