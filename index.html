@@ -1113,6 +1113,23 @@ function renderStaticI18n(){
   if(!track.dataset.dup){ track.innerHTML += track.innerHTML; track.dataset.dup = "1"; }
 }
 
+/* ---------- language switching ---------- */
+function setLang(lang){
+  if(!I18N[lang]) return;
+  currentLang = lang;
+  renderStaticI18n();
+  renderServices();
+  renderDistros();
+  renderSpecs();
+  renderDes();
+  renderChecklist();
+  renderProcess();
+  renderFaq();
+  bindWaButtons();
+  $$("#langPills button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  initReveal();
+}
+
 /* ---------- reveal on scroll ---------- */
 function initReveal(){
   const io = new IntersectionObserver(entries => {
