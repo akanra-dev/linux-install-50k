@@ -274,6 +274,13 @@ tbody tr:hover{background:rgba(255,255,255,.02)}
 /* ---------- Footer ---------- */
 footer{border-top:1px solid var(--border);padding:36px 0;color:var(--muted2);font-size:13.5px;text-align:center}
 footer .heart{color:var(--rose)}
+footer .footer-link{
+  display:inline-flex;align-items:center;gap:7px;color:var(--cyan);
+  font-weight:700;font-size:13px;padding:8px 16px;border-radius:999px;
+  border:1px solid rgba(34,211,238,.3);background:rgba(34,211,238,.07);
+  transition:.2s;
+}
+footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.14)}
 
 /* ---------- Floating WhatsApp ---------- */
 .wa-float{
@@ -502,6 +509,7 @@ footer .heart{color:var(--rose)}
   <div class="container">
     <p>🐧 <b>Linux 50K</b> — <span data-i18n="footerLine">Jasa instalasi Linux profesional untuk semua orang.</span></p>
     <p style="margin-top:6px"><span data-i18n="footerMade">Dibuat dengan</span> <span class="heart">❤</span> <span data-i18n="footerOn">di Debian.</span> © 2026</p>
+    <p style="margin-top:12px"><a class="footer-link" href="service-portfolio.pdf" target="_blank" rel="noopener">📄 <span data-i18n="footerPdf">Service Portfolio (PDF)</span></a></p>
   </div>
 </footer>
 
@@ -626,7 +634,7 @@ const I18N = {
     ctaCtaPdf: "Download Brochure PDF",
     floatTip: "Chat admin sekarang 👋",
     footerLine: "Jasa instalasi Linux profesional untuk semua orang.",
-    footerMade: "Dibuat dengan", footerOn: "di Debian.",
+    footerMade: "Dibuat dengan", footerOn: "di Debian.", footerPdf: "Service Portfolio (PDF)",
     waMsg: "Halo Kaka, saya mau konsultasi jasa instalasi Linux 50rb",
     pdf: {
       docTag: "LINUX 50K · DOKUMEN RESMI LAYANAN · ID",
@@ -779,7 +787,7 @@ const I18N = {
     ctaCtaPdf: "Download Brochure PDF",
     floatTip: "Chat an admin now 👋",
     footerLine: "Professional Linux installation service for everyone.",
-    footerMade: "Made with", footerOn: "on Debian.",
+    footerMade: "Made with", footerOn: "on Debian.", footerPdf: "Service Portfolio (PDF)",
     waMsg: "Hello, I would like to consult about the 50k Linux installation service",
     pdf: {
       docTag: "LINUX 50K · OFFICIAL SERVICE DOCUMENT · EN",
@@ -932,7 +940,7 @@ const I18N = {
     ctaCtaPdf: "Broschüre als PDF herunterladen",
     floatTip: "Jetzt mit einem Admin chatten 👋",
     footerLine: "Professioneller Linux-Installationsservice für alle.",
-    footerMade: "Gemacht mit", footerOn: "auf Debian.",
+    footerMade: "Gemacht mit", footerOn: "auf Debian.", footerPdf: "Service-Portfolio (PDF)",
     waMsg: "Hallo, ich möchte mich zum Linux-Installationsservice für 50.000 IDR beraten lassen",
     pdf: {
       docTag: "LINUX 50K · OFFIZIELLES SERVICE-DOKUMENT · DE",
