@@ -123,4 +123,5 @@ Pengembang / SysAdmin: **Theresa Pogon (akanra-dev)**
 
 ---
 
-**📞 WhatsApp:** +62 813-3844-5874 · **💳 BNI:** 306308543 a/n Laurensia Theresa Pogon · **📄 Brochure PDF:** [service-portfolio.pdf](service-portfolio.pdf)
+**📄 Brochure PDF:** [service-portfolio.pdf](service-portfolio.pdf)
+*Kontak / contact via website — nomor & rekening tidak ditampilkan publik.*
