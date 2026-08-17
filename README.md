@@ -58,9 +58,9 @@ Pengembang / SysAdmin: **Theresa Pogon (akanra-dev)**
 
 #### 📸 Dokumentasi Laptop Asus A416J Bapak
 
-![Sebelum — Windows 11](huh.jpg)
+![Screenshot](huh.jpg)
 
-![Sesudah — MX Linux](nah.jpg)
+![Screenshot](nah.jpg)
 
 ---
 
@@ -117,9 +117,9 @@ Pengembang / SysAdmin: **Theresa Pogon (akanra-dev)**
 
 #### 📸 Documentation — Father's Laptop (ASUS A416J)
 
-![Before — Windows 11](huh.jpg)
+![Screenshot](huh.jpg)
 
-![After — MX Linux](nah.jpg)
+![Screenshot](nah.jpg)
 
 ---
 
