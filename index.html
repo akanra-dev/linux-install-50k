@@ -365,36 +365,102 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
 .to-top.show{opacity:1;pointer-events:auto;transform:none}
 .to-top:hover{border-color:var(--cyan);background:rgba(34,211,238,.12);box-shadow:0 6px 20px rgba(34,211,238,.25)}
 
-/* ================= REVIEWS ================= */
-.reviews{position:relative}
-.reviews .grid-3{gap:22px}
-.review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
-.review-card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.5);box-shadow:var(--shadow)}
-.review-card.featured{border-top:3px solid var(--amber)}
-.review-top{display:flex;align-items:center;gap:12px}
-.review-avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;flex-shrink:0}
-.review-avatar.amb{background:linear-gradient(135deg,#f59e0b,#d97706)}
-.review-avatar.pnk{background:linear-gradient(135deg,#ec4899,#be185d)}
-.review-avatar.blu{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
-.review-name{font-weight:800;font-size:14.5px}
-.review-meta{font-size:11.5px;color:var(--muted2)}
-.review-stars{color:var(--amber);font-size:13px;letter-spacing:2px}
-.review-text{color:var(--muted);font-size:13.5px;line-height:1.6}
-.review-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
-.review-photos img{width:100%;border-radius:10px;border:1px solid var(--border);object-fit:cover;aspect-ratio:4/3}
-.review-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
-.review-badges span{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--card2);border:1px solid var(--border);color:var(--cyan)}
-.review-badges span.vid{color:var(--rose);border-color:rgba(251,113,133,.35)}
-.review-video{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#111;border:1px solid var(--border)}
-.review-video .play{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;color:#fff;background:rgba(255,255,255,.1);cursor:pointer;transition:background .2s}
-.review-video .play:hover{background:rgba(255,255,255,.22)}
-.review-video .play::after{content:"▶";font-size:28px;margin-left:3px}
-.review-stat{text-align:center;padding:18px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius)}
-.review-stat .num{font-size:26px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.review-stat .lbl{font-size:12px;color:var(--muted2);margin-top:4px;font-weight:600}
 /* active nav link */
 .nav-links a.active{color:var(--text);font-weight:800}
 .nav-links a.active::after{transform:scaleX(1);transform-origin:left}
+
+/* ================= REVIEWS ================= */
+.reviews{position:relative}
+.reviews-summary{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;flex-wrap:wrap}
+.reviews-summary .avg{font-size:28px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.reviews-summary .stars{color:var(--amber);font-size:17px;letter-spacing:2px}
+.reviews-summary .cnt{font-size:13px;color:var(--muted)}
+.reviews-summary .write-btn{margin-left:auto}
+.review-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:18px;display:none}
+.review-form.open{display:block}
+.review-form .field{margin-bottom:12px}
+.review-form label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.review-form textarea{width:100%;background:var(--bg0);border:1px solid var(--border);border-radius:12px;padding:11px 13px;color:var(--text);font-family:inherit;font-size:14px;resize:vertical;min-height:80px;transition:border-color .2s}
+.review-form textarea:focus{outline:none;border-color:var(--cyan)}
+.review-form .stars-row{display:flex;gap:5px;font-size:24px;cursor:pointer;user-select:none}
+.review-form .stars-row .star{cursor:pointer;transition:transform .15s}
+.review-form .stars-row .star:hover{transform:scale(1.2)}
+.review-form .stars-row .star.on{color:var(--amber)}
+.review-form .stars-row .star.off{color:#3a4560}
+.review-form .attach{display:flex;gap:9px;flex-wrap:wrap;margin-top:4px}
+.review-form .attach-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:11px;font-size:12.5px;font-weight:700;background:var(--card2);border:1px solid var(--border);color:var(--text);cursor:pointer;transition:.2s}
+.review-form .attach-btn:hover{border-color:var(--cyan);background:var(--card)}
+.review-form .attach-btn .n{background:rgba(34,211,238,.15);color:var(--cyan);padding:2px 6px;border-radius:7px;font-size:10.5px}
+.review-form .preview{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
+.review-form .preview img{width:60px;height:60px;object-fit:cover;border-radius:9px;border:1px solid var(--border)}
+.review-form .preview .vid{width:60px;height:60px;border-radius:9px;background:#111;display:grid;place-items:center;color:var(--rose);font-size:17px;border:1px solid var(--border)}
+.review-form .submit{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;padding:11px 22px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
+.review-form .submit:hover{box-shadow:0 8px 24px rgba(99,102,241,.45);transform:translateY(-1px)}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.review-card:hover{transform:translateY(-2px)}
+.review-card .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.review-card .avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
+.review-card .avatar.amb{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.review-card .avatar.pnk{background:linear-gradient(135deg,#ec4899,#be185d)}
+.review-card .avatar.blu{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.review-card .name{font-weight:800;font-size:13.5px}
+.review-card .verified{font-size:10.5px;color:var(--emerald);margin-left:3px}
+.review-card .date{font-size:10.5px;color:var(--muted2)}
+.review-card .stars{color:var(--amber);font-size:12px;letter-spacing:2px;margin-bottom:4px}
+.review-card .comment{color:var(--muted);font-size:13.5px;line-height:1.5}
+.review-card .photos{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.review-card .photos img{width:68px;height:68px;object-fit:cover;border-radius:9px;border:1px solid var(--border)}
+.review-card .video-chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;color:var(--rose);background:rgba(251,113,133,.1);border:1px solid rgba(251,113,133,.3);padding:3px 9px;border-radius:999px;margin-top:5px}
+.review-empty{text-align:center;padding:30px 16px;color:var(--muted)}
+.review-empty .icon{font-size:40px;margin-bottom:8px;opacity:.45}
+.review-empty p{font-size:13.5px}
+
+
+/* ================= REVIEWS ================= */
+.reviews{position:relative}
+.reviews-summary{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;flex-wrap:wrap}
+.reviews-summary .avg{font-size:28px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.reviews-summary .stars{color:var(--amber);font-size:17px;letter-spacing:2px}
+.reviews-summary .cnt{font-size:13px;color:var(--muted)}
+.reviews-summary .write-btn{margin-left:auto}
+.review-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:18px;display:none}
+.review-form.open{display:block}
+.review-form .field{margin-bottom:12px}
+.review-form label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.review-form textarea{width:100%;background:var(--bg0);border:1px solid var(--border);border-radius:12px;padding:11px 13px;color:var(--text);font-family:inherit;font-size:14px;resize:vertical;min-height:80px;transition:border-color .2s}
+.review-form textarea:focus{outline:none;border-color:var(--cyan)}
+.review-form .stars-row{display:flex;gap:5px;font-size:24px;cursor:pointer;user-select:none}
+.review-form .stars-row .star{cursor:pointer;transition:transform .15s}
+.review-form .stars-row .star:hover{transform:scale(1.2)}
+.review-form .stars-row .star.on{color:var(--amber)}
+.review-form .stars-row .star.off{color:#3a4560}
+.review-form .attach{display:flex;gap:9px;flex-wrap:wrap;margin-top:4px}
+.review-form .attach-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:11px;font-size:12.5px;font-weight:700;background:var(--card2);border:1px solid var(--border);color:var(--text);cursor:pointer;transition:.2s}
+.review-form .attach-btn:hover{border-color:var(--cyan);background:var(--card)}
+.review-form .attach-btn .n{background:rgba(34,211,238,.15);color:var(--cyan);padding:2px 6px;border-radius:7px;font-size:10.5px}
+.review-form .preview{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
+.review-form .preview img{width:60px;height:60px;object-fit:cover;border-radius:9px;border:1px solid var(--border)}
+.review-form .preview .vid{width:60px;height:60px;border-radius:9px;background:#111;display:grid;place-items:center;color:var(--rose);font-size:17px;border:1px solid var(--border)}
+.review-form .submit{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;padding:11px 22px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
+.review-form .submit:hover{box-shadow:0 8px 24px rgba(99,102,241,.45);transform:translateY(-1px)}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.review-card:hover{transform:translateY(-2px)}
+.review-card .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.review-card .avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
+.review-card .avatar.amb{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.review-card .avatar.pnk{background:linear-gradient(135deg,#ec4899,#be185d)}
+.review-card .avatar.blu{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.review-card .name{font-weight:800;font-size:13.5px}
+.review-card .verified{font-size:10.5px;color:var(--emerald);margin-left:3px}
+.review-card .date{font-size:10.5px;color:var(--muted2)}
+.review-card .stars{color:var(--amber);font-size:12px;letter-spacing:2px;margin-bottom:4px}
+.review-card .comment{color:var(--muted);font-size:13.5px;line-height:1.5}
+.review-card .photos{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.review-card .photos img{width:68px;height:68px;object-fit:cover;border-radius:9px;border:1px solid var(--border)}
+.review-card .video-chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:700;color:var(--rose);background:rgba(251,113,133,.1);border:1px solid rgba(251,113,133,.3);padding:3px 9px;border-radius:999px;margin-top:5px}
+.review-empty{text-align:center;padding:30px 16px;color:var(--muted)}
+.review-empty .icon{font-size:40px;margin-bottom:8px;opacity:.45}
+.review-empty p{font-size:13.5px}
 
 </style>
 </head>
@@ -583,9 +649,30 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
   <div class="container">
     <div class="eyebrow"><span>💬</span><span data-i18n="eyebrowReviews">Reviews</span></div>
     <h2 class="title" data-i18n="reviewsTitle">What <span class="g">Customers Say</span></h2>
-    <p class="sub" data-i18n="reviewsSub">Real stories and before/after photos from our customers.</p>
-    <div class="grid grid-3" style="margin-top:28px" id="reviewsStats"></div>
-    <div class="grid grid-3" id="reviewsGrid" style="margin-top:24px"></div>
+    <p class="sub" data-i18n="reviewsSub">Share your experience — rate, comment, add photo or video.</p>
+    <div class="reviews-summary" id="reviewsSummary"></div>
+    <div class="review-form" id="reviewForm">
+      <div class="field">
+        <label data-i18n="reviewRate">Your Rating</label>
+        <div class="stars-row" id="rateStars"></div>
+      </div>
+      <div class="field">
+        <label data-i18n="reviewComment">Comment</label>
+        <textarea id="reviewComment"></textarea>
+      </div>
+      <div class="field">
+        <label data-i18n="reviewAttach">Attach Photo / Video</label>
+        <div class="attach">
+          <button type="button" class="attach-btn" id="attachPhoto">📷 Foto <span class="n" id="photoN">0</span></button>
+          <button type="button" class="attach-btn" id="attachVideo">📹 Video <span class="n" id="videoN">0</span></button>
+        </div>
+        <input type="file" id="filePhoto" accept="image/*" multiple hidden>
+        <input type="file" id="fileVideo" accept="video/*" hidden>
+        <div class="preview" id="filePreview"></div>
+      </div>
+      <button type="button" class="submit" id="submitReview"><span data-i18n="reviewSubmit">Kirim Ulasan</span></button>
+    </div>
+    <div id="reviewsList"></div>
   </div>
 </section>
 
@@ -733,15 +820,19 @@ const I18N = {
       { q: "Laptop saya sudah tua, kuat nggak?", a: "Sangat kuat. Dengan 8GB RAM pun MX Linux berjalan mulus. Itu keunggulan utama Linux." },
       { q: "Apakah saya harus paham komputer?", a: "Tidak perlu. Kami pasang, konfigurasi, dan ajarkan cara pakai sampai kamu nyaman." }
     ],
-    reviews:[
-      {n:"Bapak \u2014 ASUS A416J",i:"BR",a:"amb",b4:"huh.jpg",af:"nah.jpg",s:5,m:"\u00d7\u00d7\u00d7",t:"Sebelum laptopnya lemot dan sering error, sekarang MX Linux 25 berjalan mulus tanpa jeda. Foto sebelum dan sesudahnya jadi bukti nyata! Support 7 hari sangat membantu.",ph:true,v:true,f:true},
-      {n:"Ibu Sari",i:"IS",a:"pnk",s:5,m:"\u00d7\u00d7",t:"Laptop HP saya yang lama kembali cepat dengan Linux Mint. Prosesnya rapi dan data saya aman. Sangat direkomendasikan!",ph:false,v:true},
-      {n:"Pak Hendra",i:"PH",a:"blu",s:5,m:"\u00d7\u00d7",t:"Dual boot Windows dan Zorin OS berjalan sempurna. Desktop-nya mirip Windows jadi tidak perlu belajar ulang. Thanks!",ph:false,v:true},
-    ],
-    reviewsTitle:"Apa Kata <span class='g'>Pelanggan</span>",
-    reviewsSub:"Cerita nyata dan foto sebelum/sesudah dari pelanggan kami.",
     eyebrowReviews:"Ulasan",
-    statInstalls:"Laptops Diinstal",statSupport:"Support Pasca-Jual",statResult:"Garansi Hasil",
+    reviewsTitle:"Apa Kata <span class='g'>Pelanggan</span>",
+    reviewsSub:"Tulis ulasanmu dengan rating, foto, atau video.",
+    reviewsEmpty:"Jadilah yang pertama memberikan ulasan. \uD83E\uDD14",
+    reviewsWrite:"Tulis Ulasan",
+    reviewRate:"Pilih rating",
+    reviewComment:"Komentar",
+    reviewCommentPl:"Tulis komentarmu di sini...",
+    reviewAttach:"Lampirkan Foto / Video",
+    reviewPhoto:"\uD83D\uDCF7 Foto",
+    reviewVideo:"\uD83C\uDFAC Video",
+    reviewSubmit:"Kirim Ulasan",
+    reviewVerified:"Terverifikasi",
     ctaBadge: "Slot hari ini masih tersedia",
     ctaTitle: "Siap Beralih ke Linux?",
     ctaSub: "Chat kami sekarang, kirim spesifikasi laptopmu, dan kita pasang Linux-nya hari ini juga. Konsultasi gratis, tanpa komitmen.",
@@ -892,15 +983,19 @@ const I18N = {
       { q: "My laptop is old, is it strong enough?", a: "Very. Even 8GB RAM runs MX Linux smoothly. That's Linux's main advantage." },
       { q: "Do I need computer knowledge?", a: "No. We install, configure, and teach you until you're comfortable." }
     ],
-    reviews:[
-      {n:"Bapak \u2014 ASUS A416J",i:"BR",a:"amb",b4:"huh.jpg",af:"nah.jpg",s:5,m:"\u00d7\u00d7\u00d7",t:"My old laptop was slow and glitchy, now MX Linux 25 runs smooth without lag. The before/after photos prove it! 7-day support was super helpful.",ph:true,v:true,f:true},
-      {n:"Ibu Sari",i:"IS",a:"pnk",s:5,m:"\u00d7\u00d7",t:"My old HP laptop is fast again with Linux Mint. Clean process and my data was safe. Highly recommended!",ph:false,v:true},
-      {n:"Pak Hendra",i:"PH",a:"blu",s:5,m:"\u00d7\u00d7",t:"Dual boot Windows and Zorin OS works perfectly. The desktop looks like Windows so no need to re-learn. Thanks!",ph:false,v:true},
-    ],
-    reviewsTitle:"What <span class='g'>Customers Say</span>",
-    reviewsSub:"Real stories and before/after photos from our customers.",
     eyebrowReviews:"Reviews",
-    statInstalls:"Laptops Installed",statSupport:"After-Sales Support",statResult:"Result Guarantee",
+    reviewsTitle:"What <span class='g'>Customers Say</span>",
+    reviewsSub:"Leave a review with rating, comment, photo, or video.",
+    reviewsEmpty:"Be the first to leave a review. \uD83E\uDD14",
+    reviewsWrite:"Write a Review",
+    reviewRate:"Pick a rating",
+    reviewComment:"Comment",
+    reviewCommentPl:"Write your comment here...",
+    reviewAttach:"Attach Photo / Video",
+    reviewPhoto:"\uD83D\uDCF7 Photo",
+    reviewVideo:"\uD83C\uDFAC Video",
+    reviewSubmit:"Submit Review",
+    reviewVerified:"Verified",
     ctaBadge: "Slots still available today",
     ctaTitle: "Ready to Switch to Linux?",
     ctaSub: "Chat us now, send your laptop specs, and we'll install Linux today. Free consultation, no commitment.",
@@ -1051,15 +1146,19 @@ const I18N = {
       { q: "Mein Laptop ist alt, reicht das?", a: "Ja. Selbst mit 8 GB RAM läuft MX Linux flüssig. Das ist der große Vorteil von Linux." },
       { q: "Muss ich mich mit Computern auskennen?", a: "Nein. Wir installieren, konfigurieren und zeigen dir alles, bis du dich sicher fühlst." }
     ],
-    reviews:[
-      {n:"Bapak \u2014 ASUS A416J",i:"BR",a:"amb",b4:"huh.jpg",af:"nah.jpg",s:5,m:"\u00d7\u00d7\u00d7",t:"Mein alter Laptop war langsam und fehlerhaft, jetzt l\u00e4uft MX Linux 25 ohne Ruckeln. Die Vorher/Nachher-Fotos beweisen es! Der 7-Tage-Support war sehr hilfreich.",ph:true,v:true,f:true},
-      {n:"Ibu Sari",i:"IS",a:"pnk",s:5,m:"\u00d7\u00d7",t:"Meine alte HP-Laptop ist mit Linux Mint wieder schnell. Sauberer Prozess und meine Daten waren sicher. Sehr empfehlenswert!",ph:false,v:true},
-      {n:"Pak Hendra",i:"PH",a:"blu",s:5,m:"\u00d7\u00d7",t:"Dual-Boot Windows und Zorin OS funktioniert perfekt. Der Desktop sieht aus wie Windows, also muss ich nicht neu lernen. Danke!",ph:false,v:true},
-    ],
-    reviewsTitle:"Was <span class='g'>Kunden sagen</span>",
-    reviewsSub:"Echte Geschichten und Vorher/Nachher-Fotos unserer Kunden.",
     eyebrowReviews:"Bewertungen",
-    statInstalls:"Laptops Installiert",statSupport:"Support Nach Verkauf",statResult:"Ergebnis-Garantie",
+    reviewsTitle:"Was <span class='g'>Kunden sagen</span>",
+    reviewsSub:"Hinterlasse eine Bewertung mit Rating, Kommentar, Foto oder Video.",
+    reviewsEmpty:"Sei der Erste, der eine Bewertung hinterl\u00e4sst. \uD83E\uDD14",
+    reviewsWrite:"Bewertung schreiben",
+    reviewRate:"Bewertung w\u00e4hlen",
+    reviewComment:"Kommentar",
+    reviewCommentPl:"Schreibe deinen Kommentar hier...",
+    reviewAttach:"Foto / Video anh\u00e4ngen",
+    reviewPhoto:"\uD83D\uDCF7 Foto",
+    reviewVideo:"\uD83C\uDFAC Video",
+    reviewSubmit:"Bewertung absenden",
+    reviewVerified:"Verifiziert",
     ctaBadge: "Heute sind noch Termine frei",
     ctaTitle: "Bereit für den Umstieg auf Linux?",
     ctaSub: "Schreib uns jetzt, sende die Specs deines Laptops — und wir installieren Linux noch heute. Kostenlose Beratung, ohne Verpflichtung.",
@@ -1332,65 +1431,113 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveal();
 });
 
-/* ================= REVIEWS ================= */
+/* ================= REVIEWS (Shopee-style) ================= */
+let rState = { rating:0, photos:[], videoName:'' };
 function renderReviews(){
   const t = I18N[currentLang];
-  /* stats */
-  $("#reviewsStats").innerHTML = [t.statInstalls, t.statSupport, t.statResult].map(l =>
-    '<div class="review-stat"><div class="num">100+</div><div class="lbl">' + l + '</div></div>'
+  const list = JSON.parse(localStorage.getItem('lv_reviews')||'[]');
+  /* summary */
+  const cnt = list.length;
+  const stars = cnt ? starsHTML(list.reduce((s,r)=>s+r.rating,0)/cnt) : '';
+  $("#reviewsSummary").innerHTML =
+    '<div class="avg">'+(cnt ? (list.reduce((s,r)=>s+r.rating,0)/cnt).toFixed(1) : '-')+'</div>'+
+    '<div><div class="stars">'+stars+'</div><div class="cnt">'+(cnt?cnt+' ulasan':t.reviewsEmpty)+'</div></div>'+
+    '<button class="btn btn-ghost btn-sm write-btn" id="writeReviewBtn">'+t.reviewsWrite+'</button>';
+  /* form stars */
+  $("#rateStars").innerHTML = [1,2,3,4,5].map(i =>
+    '<span class="star '+(i<=rState.rating?'on':'off')+'" data-v="'+i+'">★</span>'
   ).join("");
-  /* cards */
-  $("#reviewsGrid").innerHTML = t.reviews.map(r => {
-    let body = '<div class="review-top"><div class="review-avatar ' + r.a + '">' + r.i + '</div><div><div class="review-name">' + r.n + '</div><div class="review-meta">' + r.m + '</div><div class="review-stars">' + "★".repeat(r.s) + "☆".repeat(5 - r.s) + '</div></div></div>';
-    body += '<div class="review-text">' + r.t + '</div>';
-    if (r.b4) {
-      body += '<div class="review-photos"><img src="' + r.b4 + '" alt="before"><img src="' + r.af + '" alt="after"></div>';
-    }
-    if (r.v) {
-      body += '<div class="review-video"><div class="play"></div></div>';
-    }
-    body += '<div class="review-badges">' + (r.ph ? '<span>📷 Photo</span>' : '') + (r.v ? '<span class="vid">📹 Video</span>' : '') + '</div>';
-    return '<div class="review-card' + (r.f ? ' featured' : '') + '">' + body + '</div>';
-  }).join("");
+  $("#rateStars .star").forEach(s => s.addEventListener("click", () => {
+    rState.rating = +s.dataset.v; renderStars();
+  }));
+  function renderStars(){
+    $("#rateStars .star").forEach(s => s.className='star '+(+s.dataset.v<=rState.rating?'on':'off'));
+  }
+  $("#reviewComment").placeholder = t.reviewCommentPl||'';
+  /* list */
+  const listEl = $("#reviewsList");
+  if(!cnt){
+    listEl.innerHTML = '<div class="review-empty"><div class="icon">\uD83D\uDCDD</div><p>'+t.reviewsEmpty+'</p></div>';
+  } else {
+    listEl.innerHTML = list.map(r => {
+      const d = new Date(r.ts);
+      const dl = currentLang==='de'?'de-DE':'en-US';
+      const date = d.toLocaleDateString(dl,{year:'numeric',month:'short',day:'numeric'});
+      const photos = (r.photos||[]).length
+        ? '<div class="photos">'+(r.photos||[]).map(p=>'<img src="'+p+'" alt="photo">').join('')+'</div>'
+        : '';
+      const video = r.videoName ? '<div class="video-chip">\uD83C\uDFAC Video</div>' : '';
+      return '<div class="review-card"><div class="top"><div class="avatar amb">'+r.name[0]+'</div><div><div class="name">'+r.name+' <span class="verified">'+t.reviewVerified+'</span></div><div class="date">'+date+'</div></div></div>'+
+        '<div class="stars">'+"★".repeat(r.rating)+"☆".repeat(5-r.rating)+'</div>'+
+        '<div class="comment">'+r.comment+'</div>'+photos+video+'</div>';
+    }).join('');
+  }
+  /* write button delegation */
+  const wb = $("#writeReviewBtn");
+  if(wb) wb.addEventListener("click", () => $("#reviewForm").classList.toggle("open"));
 }
-
 function initScrollSpy(){
   const navH = 80;
   const sections = $$('section[id], #top');
   const navLinks = $$('.nav-links a');
   const onScroll = () => {
     let cur = '';
-    sections.forEach(s => {
-      if (document.documentElement.scrollTop >= s.offsetTop - navH) cur = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
-    });
+    sections.forEach(s => { if(document.documentElement.scrollTop >= s.offsetTop - navH) cur = s.id; });
+    navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href')==='#'+cur); });
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-  /* smoother nav click with offset for sticky nav */
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
   navLinks.forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
+      if(!href||!href.startsWith('#')) return;
       e.preventDefault();
       const target = document.querySelector(href);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      history.pushState(null, '', href);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+      history.pushState(null,'',href);
     });
   });
 }
-
-/* ---------- wire into setLang & boot ---------- */
-const _origSetLang = setLang;
-setLang = function(lang){
-  _origSetLang(lang);
-  renderReviews();
-};
+/* ---- boot ---- */
 document.addEventListener("DOMContentLoaded", () => {
-  renderReviews();
+  const fp = $("#filePhoto"), vp = $("#fileVideo"), prev = $("#filePreview");
+  const photoN = $("#photoN"), videoN = $("#videoN");
+  $("#attachPhoto").addEventListener("click", () => fp.click());
+  $("#attachVideo").addEventListener("click", () => vp.click());
+  fp.addEventListener("change", e => {
+    [...e.target.files].forEach(f => {
+      if(rState.photos.length >= 3) return;
+      const reader = new FileReader();
+      reader.onload = ev => { rState.photos.push(ev.target.result); renderFilePreview(); };
+      reader.readAsDataURL(f);
+    });
+    photoN.textContent = rState.photos.length; fp.value = '';
+  });
+  vp.addEventListener("change", e => {
+    const f = e.target.files[0];
+    if(f){ rState.videoName = f.name; renderFilePreview(); }
+    videoN.textContent = rState.videoName ? 1 : 0; vp.value = '';
+  });
+  function renderFilePreview(){
+    let h = rState.photos.map(p => '<img src="'+p+'" alt="photo">').join('');
+    if(rState.videoName) h += '<div class="vid">\uD83C\uDFAC</div>';
+    prev.innerHTML = h;
+  }
+  $("#reviewsSummary").addEventListener("click", e => {
+    if(e.target.closest("#writeReviewBtn")) $("#reviewForm").classList.toggle("open");
+  });
+  $("#submitReview").addEventListener("click", () => {
+    if(!rState.rating){ alert(I18N[currentLang].reviewRate||"Please select a rating"); return; }
+    const comment = ($("#reviewComment").value||"").trim();
+    const list = JSON.parse(localStorage.getItem('lv_reviews')||'[]');
+    list.unshift({name:"You",rating:rState.rating,comment:comment||"(No comment)",photos:rState.photos.slice(),videoName:rState.videoName,ts:Date.now()});
+    localStorage.setItem('lv_reviews', JSON.stringify(list));
+    rState = {rating:0,photos:[],videoName:''};
+    $("#reviewComment").value=""; prev.innerHTML=""; photoN.textContent="0"; videoN.textContent="0";
+    $("#reviewForm").classList.remove("open");
+    renderReviews();
+  });
   initScrollSpy();
+  renderReviews();
 });
 
 </script>
