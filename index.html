@@ -1447,11 +1447,11 @@ function renderReviews(){
   $("#rateStars").innerHTML = [1,2,3,4,5].map(i =>
     '<span class="star '+(i<=rState.rating?'on':'off')+'" data-v="'+i+'">★</span>'
   ).join("");
-  $("#rateStars .star").forEach(s => s.addEventListener("click", () => {
+  $$("#rateStars .star").forEach(s => s.addEventListener("click", () => {
     rState.rating = +s.dataset.v; renderStars();
   }));
   function renderStars(){
-    $("#rateStars .star").forEach(s => s.className='star '+(+s.dataset.v<=rState.rating?'on':'off'));
+    $$("#rateStars .star").forEach(s => s.className='star '+(+s.dataset.v<=rState.rating?'on':'off'));
   }
   $("#reviewComment").placeholder = t.reviewCommentPl||'';
   /* list */
