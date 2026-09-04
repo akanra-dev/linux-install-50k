@@ -364,6 +364,38 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
 }
 .to-top.show{opacity:1;pointer-events:auto;transform:none}
 .to-top:hover{border-color:var(--cyan);background:rgba(34,211,238,.12);box-shadow:0 6px 20px rgba(34,211,238,.25)}
+
+/* ================= REVIEWS ================= */
+.reviews{position:relative}
+.reviews .grid-3{gap:22px}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:12px;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.review-card:hover{transform:translateY(-4px);border-color:rgba(99,102,241,.5);box-shadow:var(--shadow)}
+.review-card.featured{border-top:3px solid var(--amber)}
+.review-top{display:flex;align-items:center;gap:12px}
+.review-avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;flex-shrink:0}
+.review-avatar.amb{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.review-avatar.pnk{background:linear-gradient(135deg,#ec4899,#be185d)}
+.review-avatar.blu{background:linear-gradient(135deg,#3b82f6,#1d4ed8)}
+.review-name{font-weight:800;font-size:14.5px}
+.review-meta{font-size:11.5px;color:var(--muted2)}
+.review-stars{color:var(--amber);font-size:13px;letter-spacing:2px}
+.review-text{color:var(--muted);font-size:13.5px;line-height:1.6}
+.review-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:2px}
+.review-photos img{width:100%;border-radius:10px;border:1px solid var(--border);object-fit:cover;aspect-ratio:4/3}
+.review-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.review-badges span{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--card2);border:1px solid var(--border);color:var(--cyan)}
+.review-badges span.vid{color:var(--rose);border-color:rgba(251,113,133,.35)}
+.review-video{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#111;border:1px solid var(--border)}
+.review-video .play{position:absolute;inset:0;display:grid;place-items:center;font-size:34px;color:#fff;background:rgba(255,255,255,.1);cursor:pointer;transition:background .2s}
+.review-video .play:hover{background:rgba(255,255,255,.22)}
+.review-video .play::after{content:"▶";font-size:28px;margin-left:3px}
+.review-stat{text-align:center;padding:18px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius)}
+.review-stat .num{font-size:26px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.review-stat .lbl{font-size:12px;color:var(--muted2);margin-top:4px;font-weight:600}
+/* active nav link */
+.nav-links a.active{color:var(--text);font-weight:800}
+.nav-links a.active::after{transform:scaleX(1);transform-origin:left}
+
 </style>
 </head>
 <body>
@@ -546,6 +578,17 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
   </div>
 </section>
 
+<!-- ================= REVIEWS ================= -->
+<section id="reviews" style="background:var(--bg1);border-block:1px solid var(--border)">
+  <div class="container">
+    <div class="eyebrow"><span>💬</span><span data-i18n="eyebrowReviews">Reviews</span></div>
+    <h2 class="title" data-i18n="reviewsTitle">What <span class="g">Customers Say</span></h2>
+    <p class="sub" data-i18n="reviewsSub">Real stories and before/after photos from our customers.</p>
+    <div class="grid grid-3" style="margin-top:28px" id="reviewsStats"></div>
+    <div class="grid grid-3" id="reviewsGrid" style="margin-top:24px"></div>
+  </div>
+</section>
+
 <!-- ================= FINAL CTA ================= -->
 <section>
   <div class="container">
@@ -690,6 +733,15 @@ const I18N = {
       { q: "Laptop saya sudah tua, kuat nggak?", a: "Sangat kuat. Dengan 8GB RAM pun MX Linux berjalan mulus. Itu keunggulan utama Linux." },
       { q: "Apakah saya harus paham komputer?", a: "Tidak perlu. Kami pasang, konfigurasi, dan ajarkan cara pakai sampai kamu nyaman." }
     ],
+    reviews:[
+      {n:"Bapak \u2014 ASUS A416J",i:"BR",a:"amb",b4:"huh.jpg",af:"nah.jpg",s:5,m:"\u00d7\u00d7\u00d7",t:"Sebelum laptopnya lemot dan sering error, sekarang MX Linux 25 berjalan mulus tanpa jeda. Foto sebelum dan sesudahnya jadi bukti nyata! Support 7 hari sangat membantu.",ph:true,v:true,f:true},
+      {n:"Ibu Sari",i:"IS",a:"pnk",s:5,m:"\u00d7\u00d7",t:"Laptop HP saya yang lama kembali cepat dengan Linux Mint. Prosesnya rapi dan data saya aman. Sangat direkomendasikan!",ph:false,v:true},
+      {n:"Pak Hendra",i:"PH",a:"blu",s:5,m:"\u00d7\u00d7",t:"Dual boot Windows dan Zorin OS berjalan sempurna. Desktop-nya mirip Windows jadi tidak perlu belajar ulang. Thanks!",ph:false,v:true},
+    ],
+    reviewsTitle:"Apa Kata <span class='g'>Pelanggan</span>",
+    reviewsSub:"Cerita nyata dan foto sebelum/sesudah dari pelanggan kami.",
+    eyebrowReviews:"Ulasan",
+    statInstalls:"Laptops Diinstal",statSupport:"Support Pasca-Jual",statResult:"Garansi Hasil",
     ctaBadge: "Slot hari ini masih tersedia",
     ctaTitle: "Siap Beralih ke Linux?",
     ctaSub: "Chat kami sekarang, kirim spesifikasi laptopmu, dan kita pasang Linux-nya hari ini juga. Konsultasi gratis, tanpa komitmen.",
@@ -840,6 +892,15 @@ const I18N = {
       { q: "My laptop is old, is it strong enough?", a: "Very. Even 8GB RAM runs MX Linux smoothly. That's Linux's main advantage." },
       { q: "Do I need computer knowledge?", a: "No. We install, configure, and teach you until you're comfortable." }
     ],
+    reviews:[
+      {n:"Bapak \u2014 ASUS A416J",i:"BR",a:"amb",b4:"huh.jpg",af:"nah.jpg",s:5,m:"\u00d7\u00d7\u00d7",t:"My old laptop was slow and glitchy, now MX Linux 25 runs smooth without lag. The before/after photos prove it! 7-day support was super helpful.",ph:true,v:true,f:true},
+      {n:"Ibu Sari",i:"IS",a:"pnk",s:5,m:"\u00d7\u00d7",t:"My old HP laptop is fast again with Linux Mint. Clean process and my data was safe. Highly recommended!",ph:false,v:true},
+      {n:"Pak Hendra",i:"PH",a:"blu",s:5,m:"\u00d7\u00d7",t:"Dual boot Windows and Zorin OS works perfectly. The desktop looks like Windows so no need to re-learn. Thanks!",ph:false,v:true},
+    ],
+    reviewsTitle:"What <span class='g'>Customers Say</span>",
+    reviewsSub:"Real stories and before/after photos from our customers.",
+    eyebrowReviews:"Reviews",
+    statInstalls:"Laptops Installed",statSupport:"After-Sales Support",statResult:"Result Guarantee",
     ctaBadge: "Slots still available today",
     ctaTitle: "Ready to Switch to Linux?",
     ctaSub: "Chat us now, send your laptop specs, and we'll install Linux today. Free consultation, no commitment.",
@@ -990,6 +1051,15 @@ const I18N = {
       { q: "Mein Laptop ist alt, reicht das?", a: "Ja. Selbst mit 8 GB RAM läuft MX Linux flüssig. Das ist der große Vorteil von Linux." },
       { q: "Muss ich mich mit Computern auskennen?", a: "Nein. Wir installieren, konfigurieren und zeigen dir alles, bis du dich sicher fühlst." }
     ],
+    reviews:[
+      {n:"Bapak \u2014 ASUS A416J",i:"BR",a:"amb",b4:"huh.jpg",af:"nah.jpg",s:5,m:"\u00d7\u00d7\u00d7",t:"Mein alter Laptop war langsam und fehlerhaft, jetzt l\u00e4uft MX Linux 25 ohne Ruckeln. Die Vorher/Nachher-Fotos beweisen es! Der 7-Tage-Support war sehr hilfreich.",ph:true,v:true,f:true},
+      {n:"Ibu Sari",i:"IS",a:"pnk",s:5,m:"\u00d7\u00d7",t:"Meine alte HP-Laptop ist mit Linux Mint wieder schnell. Sauberer Prozess und meine Daten waren sicher. Sehr empfehlenswert!",ph:false,v:true},
+      {n:"Pak Hendra",i:"PH",a:"blu",s:5,m:"\u00d7\u00d7",t:"Dual-Boot Windows und Zorin OS funktioniert perfekt. Der Desktop sieht aus wie Windows, also muss ich nicht neu lernen. Danke!",ph:false,v:true},
+    ],
+    reviewsTitle:"Was <span class='g'>Kunden sagen</span>",
+    reviewsSub:"Echte Geschichten und Vorher/Nachher-Fotos unserer Kunden.",
+    eyebrowReviews:"Bewertungen",
+    statInstalls:"Laptops Installiert",statSupport:"Support Nach Verkauf",statResult:"Ergebnis-Garantie",
     ctaBadge: "Heute sind noch Termine frei",
     ctaTitle: "Bereit für den Umstieg auf Linux?",
     ctaSub: "Schreib uns jetzt, sende die Specs deines Laptops — und wir installieren Linux noch heute. Kostenlose Beratung, ohne Verpflichtung.",
@@ -1187,6 +1257,7 @@ function setLang(lang){
   $$("#langPills button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
   stagger();
   initReveal();
+  renderReviews();
 }
 
 /* ---------- reveal on scroll ---------- */
@@ -1260,6 +1331,68 @@ document.addEventListener("DOMContentLoaded", () => {
   setLang("id");
   initReveal();
 });
+
+/* ================= REVIEWS ================= */
+function renderReviews(){
+  const t = I18N[currentLang];
+  /* stats */
+  $("#reviewsStats").innerHTML = [t.statInstalls, t.statSupport, t.statResult].map(l =>
+    '<div class="review-stat"><div class="num">100+</div><div class="lbl">' + l + '</div></div>'
+  ).join("");
+  /* cards */
+  $("#reviewsGrid").innerHTML = t.reviews.map(r => {
+    let body = '<div class="review-top"><div class="review-avatar ' + r.a + '">' + r.i + '</div><div><div class="review-name">' + r.n + '</div><div class="review-meta">' + r.m + '</div><div class="review-stars">' + "★".repeat(r.s) + "☆".repeat(5 - r.s) + '</div></div></div>';
+    body += '<div class="review-text">' + r.t + '</div>';
+    if (r.b4) {
+      body += '<div class="review-photos"><img src="' + r.b4 + '" alt="before"><img src="' + r.af + '" alt="after"></div>';
+    }
+    if (r.v) {
+      body += '<div class="review-video"><div class="play"></div></div>';
+    }
+    body += '<div class="review-badges">' + (r.ph ? '<span>📷 Photo</span>' : '') + (r.v ? '<span class="vid">📹 Video</span>' : '') + '</div>';
+    return '<div class="review-card' + (r.f ? ' featured' : '') + '">' + body + '</div>';
+  }).join("");
+}
+
+function initScrollSpy(){
+  const navH = 80;
+  const sections = $$('section[id], #top');
+  const navLinks = $$('.nav-links a');
+  const onScroll = () => {
+    let cur = '';
+    sections.forEach(s => {
+      if (document.documentElement.scrollTop >= s.offsetTop - navH) cur = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  /* smoother nav click with offset for sticky nav */
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', href);
+    });
+  });
+}
+
+/* ---------- wire into setLang & boot ---------- */
+const _origSetLang = setLang;
+setLang = function(lang){
+  _origSetLang(lang);
+  renderReviews();
+};
+document.addEventListener("DOMContentLoaded", () => {
+  renderReviews();
+  initScrollSpy();
+});
+
 </script>
 </body>
 </html>
