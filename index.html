@@ -395,23 +395,6 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
 .review-form .preview .vid{width:60px;height:60px;border-radius:9px;background:#111;display:grid;place-items:center;color:var(--rose);font-size:17px;border:1px solid var(--border)}
 .review-form .submit{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;border:none;padding:11px 22px;border-radius:12px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s}
 .review-form .submit:hover{box-shadow:0 8px 24px rgba(99,102,241,.45);transform:translateY(-1px)}
-/* distro recommender — Shopee style */
-.distro-reco{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;margin:18px 0 8px;text-align:center}
-.distro-reco label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:8px}
-.distro-reco .reco-selects{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.distro-reco select{background:var(--bg0);border:1px solid var(--border);border-radius:11px;padding:9px 14px;color:var(--text);font-family:inherit;font-size:14px;cursor:pointer;outline:none;transition:border-color .2s;min-width:130px}
-.distro-reco select:focus{border-color:var(--cyan)}
-.distro-reco select option{background:var(--bg0);color:var(--text)}
-.distro-reco .reco-proc-wrap{display:flex;flex-direction:column;gap:4px}
-.distro-reco .reco-proc-wrap label{font-size:12px;font-weight:700;color:var(--muted);margin-top:8px;text-align:left}
-.distro-reco .reco-card{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;margin-top:10px;padding:14px 18px;border-radius:12px;background:#fff;border:1px solid #eee;box-shadow:0 2px 10px rgba(0,0,0,.08);color:#1a1a1a;animation:popIn .3s ease;min-width:260px;text-align:left;width:100%;max-width:400px}
-.distro-reco .reco-card .tag{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;margin-bottom:4px}
-.distro-reco .reco-card .name{font-size:16px;font-weight:800;color:#1a1a1a}
-.distro-reco .reco-card .de{font-size:12px;color:#888;font-weight:600}
-.distro-reco .reco-card .minspec{font-size:11px;color:#aaa;background:rgba(99,102,241,.08);padding:3px 8px;border-radius:6px}
-.distro-reco .reco-card .note{font-size:12px;color:#555;line-height:1.4}
-.distro-reco .reco-card .no-rec{font-size:13px;color:var(--rose);font-weight:600;padding:8px 0}
-@keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
 .review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
 .review-card:hover{transform:translateY(-2px)}
 /* horizontal scroll reviews */
@@ -650,27 +633,6 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
       </div>
       <button type="button" class="submit" id="submitReview"><span data-i18n="reviewSubmit">Kirim Ulasan</span></button>
     </div>
-    <div class="distro-reco" id="distroReco">
-      <label data-i18n="recoLabel">Spesifikasi Laptopmu:</label>
-      <div class="reco-selects">
-        <select id="recoRam">
-          <option value="">-- RAM --</option>
-          <option value="4">4 GB</option>
-          <option value="8">8 GB</option>
-          <option value="16">16 GB+</option>
-        </select>
-        <div class="reco-proc-wrap">
-          <label data-i18n="recoProcLabel">Processor:</label>
-          <select id="recoProc">
-            <option value="">-- Prosesor --</option>
-            <option value="i3">Core i3</option>
-            <option value="i5">Core i5</option>
-            <option value="i7">Core i7</option>
-          </select>
-        </div>
-      </div>
-      <div id="recoResult"></div>
-    </div>
     <div id="reviewsList"></div>
   </div>
 </section>
@@ -823,8 +785,6 @@ const I18N = {
     reviewsTitle:"Apa Kata <span class='g'>Pelanggan</span>",
     reviewsSub:"Tulis ulasanmu dengan rating, foto, atau video.",
     reviewsEmpty:"Tulis ulasan pertama kamu! 👇",
-    recoLabel:"Spesifikasi Laptopmu:",
-    recoProcLabel:"Prosesor",
     reviewsWrite:"Tulis Ulasan",
     reviewRate:"Pilih rating",
     reviewComment:"Komentar",
@@ -988,8 +948,6 @@ const I18N = {
     reviewsTitle:"What <span class='g'>Customers Say</span>",
     reviewsSub:"Leave a review with rating, comment, photo, or video.",
     reviewsEmpty:"Write your first review! 👇",
-    recoLabel:"Your Laptop Specs:",
-    recoProcLabel:"Processor",
     reviewsWrite:"Write a Review",
     reviewRate:"Pick a rating",
     reviewComment:"Comment",
@@ -1153,8 +1111,6 @@ const I18N = {
     reviewsTitle:"Was <span class='g'>Kunden sagen</span>",
     reviewsSub:"Hinterlasse eine Bewertung mit Rating, Kommentar, Foto oder Video.",
     reviewsEmpty:"Schreibe deine erste Bewertung! 👇",
-    recoLabel:"Deine Laptop-Spezifikationen:",
-    recoProcLabel:"Prozessor",
     reviewsWrite:"Bewertung schreiben",
     reviewRate:"Bewertung w\u00e4hlen",
     reviewComment:"Kommentar",
@@ -1543,34 +1499,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   initScrollSpy();
   renderReviews();
-  /* distro recommender */
-const recoRam = $("#recoRam");
-  const recoProc = $("#recoProc");
-  const recoResult = $("#recoResult");
-  if(recoRam && recoProc) {
-    function getReco(ram, proc) {
-      if (ram === 4 && proc === 'i3')
-        return { distro: "MX Linux", de: "XFCE", minSpec: "Core i3 / RAM 2–4 GB", note: "Ultra-lightweight, stable, very suitable for old laptops." };
-      if (ram >= 8 && proc === 'i5')
-        return { distro: "Linux Mint (Cinnamon) / Zorin OS", de: "Cinnamon / GNOME", minSpec: "Core i5 / RAM 8 GB", note: "Modern, eye-candy UI, smooth for heavy multitasking." };
-      if ((ram === 4 || ram === 8) && (proc === 'i3' || proc === 'i5'))
-        return { distro: "Linux Mint", de: "MATE", minSpec: "Core i3 / RAM 4 GB", note: "Balanced performance, Windows-like interface, friendly to mid-range hardware." };
-      return null;
-    }
-    function renderReco() {
-      const ram = +recoRam.value;
-      const proc = recoProc.value;
-      if (!ram || !proc) { recoResult.innerHTML = ''; return; }
-      const r = getReco(ram, proc);
-      if (r) {
-        recoResult.innerHTML = '<div class="reco-card"><span class="tag">'+r.distro+'</span><span class="name">'+r.distro+'</span><span class="de">Desktop: '+r.de+'</span><span class="minspec">Min Spec: '+r.minSpec+'</span><span class="note">'+r.note+'</span></div>';
-      } else {
-        recoResult.innerHTML = '<div class="reco-card"><span class="no-rec">Tidak ada rekomendasi untuk kombinasi ini.</span></div>';
-      }
-    }
-    recoRam.addEventListener("change", renderReco);
-    recoProc.addEventListener("change", renderReco);
-  }
 });
 
 </script>
