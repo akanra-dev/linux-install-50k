@@ -397,6 +397,13 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
 .review-form .submit:hover{box-shadow:0 8px 24px rgba(99,102,241,.45);transform:translateY(-1px)}
 .review-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
 .review-card:hover{transform:translateY(-2px)}
+/* horizontal scroll reviews */
+#reviewsList{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:16px 0 8px;margin-top:18px;-webkit-overflow-scrolling:touch}
+#reviewsList::-webkit-scrollbar{height:5px}
+#reviewsList::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+#reviewsList::-webkit-scrollbar-track{background:transparent}
+#reviewsList .review-card{flex-shrink:0;min-width:300px;max-width:380px;scroll-snap-align:start;margin-bottom:0}
+/* empty/verified styles (keep for vertical list fallback) */
 .review-card .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .review-card .avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
 .review-card .avatar.amb{background:linear-gradient(135deg,#f59e0b,#d97706)}
