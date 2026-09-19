@@ -369,6 +369,19 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
 .nav-links a.active{color:var(--text);font-weight:800}
 .nav-links a.active::after{transform:scaleX(1);transform-origin:left}
 
+/* ---------- Video demo ---------- */
+.videos{padding:72px 0;background:var(--bg1);border-block:1px solid var(--border)}
+.videos .eyebrow{margin-bottom:8px}
+.videos-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:30px}
+@media(max-width:768px){.videos-grid{grid-template-columns:1fr}}
+.vid-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .25s,border-color .25s}
+.vid-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
+.vid-card .vid-label{display:block;padding:14px 18px 6px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.vid-card .vid-label b{color:var(--text);font-size:14px}
+.vid-card video{width:100%;display:block;aspect-ratio:16/9;background:#000;cursor:pointer}
+.vid-card video::-webkit-media-controls{background:var(--bg0)}
+.vid-card video::-webkit-media-controls-panel{background:var(--bg0)}
+.vid-card .vid-hint{display:block;padding:8px 18px 14px;font-size:11.5px;color:var(--muted2)}
 /* ================= REVIEWS ================= */
 .reviews{position:relative}
 .reviews-summary{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;flex-wrap:wrap}
@@ -517,6 +530,37 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
     </div>
   </div>
 </header>
+
+<!-- ================= VIDEO DEMO ================= -->
+<section class="videos" id="videos">
+  <div class="container">
+    <div class="eyebrow"><span>🎬</span><span data-i18n="eyebrowVideos">Video Demo</span></div>
+    <h2 class="title" data-i18n="videosTitle">Watch Our <span class="g">Demo</span></h2>
+    <p class="sub" data-i18n="videosSub">See each distro in action — XFCE, Cinnamon, MATE, and Zorin OS.</p>
+    <div class="videos-grid" style="margin-top:30px">
+      <div class="vid-card">
+        <span class="vid-label"><b>🐧</b> <span data-i18n="vidMxXfce">MX Linux XFCE</span></span>
+        <video src="videos-linux/mx-xfce.mp4" controls preload="metadata"></video>
+        <span class="vid-hint">Click ▶ to play</span>
+      </div>
+      <div class="vid-card">
+        <span class="vid-label"><b>🍃</b> <span data-i18n="vidMintCinnamon">Linux Mint Cinnamon</span></span>
+        <video src="videos-linux/mint-cinnamon.mp4" controls preload="metadata"></video>
+        <span class="vid-hint">Click ▶ to play</span>
+      </div>
+      <div class="vid-card">
+        <span class="vid-label"><b>🍃</b> <span data-i18n="vidMintMATE">Linux Mint MATE</span></span>
+        <video src="videos-linux/mint-mate.mp4" controls preload="metadata"></video>
+        <span class="vid-hint">Click ▶ to play</span>
+      </div>
+      <div class="vid-card">
+        <span class="vid-label"><b>💠</b> <span data-i18n="vidZorinCore">Zorin OS Core</span></span>
+        <video src="videos-linux/zorin-core.mp4" controls preload="metadata"></video>
+        <span class="vid-hint">Click ▶ to play</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= TRUST STRIP ================= -->
 <div class="trust-strip">
@@ -782,6 +826,13 @@ const I18N = {
       { q: "Apakah saya harus paham komputer?", a: "Tidak perlu. Kami pasang, konfigurasi, dan ajarkan cara pakai sampai kamu nyaman." }
     ],
     eyebrowReviews:"Ulasan",
+    eyebrowVideos:"Video Demo",
+    videosTitle:"Lihat <span class='g'>Demo</span> Kami",
+    videosSub:"Tonton setiap distro dalam aksi — XFCE, Cinnamon, MATE, dan Zorin OS.",
+    vidMxXfce:"MX Linux XFCE",
+    vidMintCinnamon:"Linux Mint Cinnamon",
+    vidMintMATE:"Linux Mint MATE",
+    vidZorinCore:"Zorin OS Core",
     reviewsTitle:"Apa Kata <span class='g'>Pelanggan</span>",
     reviewsSub:"Tulis ulasanmu dengan rating, foto, atau video.",
     reviewsEmpty:"Tulis ulasan pertama kamu! 👇",
@@ -945,6 +996,13 @@ const I18N = {
       { q: "Do I need computer knowledge?", a: "No. We install, configure, and teach you until you're comfortable." }
     ],
     eyebrowReviews:"Reviews",
+    eyebrowVideos:"Video Demo",
+    videosTitle:"Watch Our <span class='g'>Demo</span>",
+    videosSub:"See each distro in action — XFCE, Cinnamon, MATE, and Zorin OS.",
+    vidMxXfce:"MX Linux XFCE",
+    vidMintCinnamon:"Linux Mint Cinnamon",
+    vidMintMATE:"Linux Mint MATE",
+    vidZorinCore:"Zorin OS Core",
     reviewsTitle:"What <span class='g'>Customers Say</span>",
     reviewsSub:"Leave a review with rating, comment, photo, or video.",
     reviewsEmpty:"Write your first review! 👇",
@@ -1108,6 +1166,13 @@ const I18N = {
       { q: "Muss ich mich mit Computern auskennen?", a: "Nein. Wir installieren, konfigurieren und zeigen dir alles, bis du dich sicher fühlst." }
     ],
     eyebrowReviews:"Bewertungen",
+    eyebrowVideos:"Videovorschau",
+    videosTitle:"Unsere <span class='g'>Demo</span> ansehen",
+    videosSub:"Sieh dir jede Distro in Aktion an — XFCE, Cinnamon, MATE und Zorin OS.",
+    vidMxXfce:"MX Linux XFCE",
+    vidMintCinnamon:"Linux Mint Cinnamon",
+    vidMintMATE:"Linux Mint MATE",
+    vidZorinCore:"Zorin OS Core",
     reviewsTitle:"Was <span class='g'>Kunden sagen</span>",
     reviewsSub:"Hinterlasse eine Bewertung mit Rating, Kommentar, Foto oder Video.",
     reviewsEmpty:"Schreibe deine erste Bewertung! 👇",
