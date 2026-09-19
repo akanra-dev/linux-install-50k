@@ -378,7 +378,7 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
 .vid-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.5)}
 .vid-card .vid-label{display:block;padding:14px 18px 6px;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
 .vid-card .vid-label b{color:var(--text);font-size:14px}
-.vid-card video{width:100%;display:block;aspect-ratio:16/9;background:#000;cursor:pointer}
+.vid-card video{width:100%;display:block;aspect-ratio:16/9;background:#111;cursor:pointer;min-height:180px}
 .vid-card video::-webkit-media-controls{background:var(--bg0)}
 .vid-card video::-webkit-media-controls-panel{background:var(--bg0)}
 .vid-card .vid-hint{display:block;padding:8px 18px 14px;font-size:11.5px;color:var(--muted2)}
@@ -540,22 +540,22 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
     <div class="videos-grid" style="margin-top:30px">
       <div class="vid-card">
         <span class="vid-label"><b>🐧</b> <span data-i18n="vidMxXfce">MX Linux XFCE</span></span>
-        <video src="videos-linux/mx-xfce.mp4" controls preload="metadata"></video>
+        <video controls preload="metadata" width="100%"><source src="videos-linux/mx-xfce.mp4" type="video/mp4"></video>
         <span class="vid-hint">Click ▶ to play</span>
       </div>
       <div class="vid-card">
         <span class="vid-label"><b>🍃</b> <span data-i18n="vidMintCinnamon">Linux Mint Cinnamon</span></span>
-        <video src="videos-linux/mint-cinnamon.mp4" controls preload="metadata"></video>
+        <video controls preload="metadata" width="100%"><source src="videos-linux/mint-cinnamon.mp4" type="video/mp4"></video>
         <span class="vid-hint">Click ▶ to play</span>
       </div>
       <div class="vid-card">
         <span class="vid-label"><b>🍃</b> <span data-i18n="vidMintMATE">Linux Mint MATE</span></span>
-        <video src="videos-linux/mint-mate.mp4" controls preload="metadata"></video>
+        <video controls preload="metadata" width="100%"><source src="videos-linux/mint-mate.mp4" type="video/mp4"></video>
         <span class="vid-hint">Click ▶ to play</span>
       </div>
       <div class="vid-card">
         <span class="vid-label"><b>💠</b> <span data-i18n="vidZorinCore">Zorin OS Core</span></span>
-        <video src="videos-linux/zorin-core.mp4" controls preload="metadata"></video>
+        <video controls preload="metadata" width="100%"><source src="videos-linux/zorin-core.mp4" type="video/mp4"></video>
         <span class="vid-hint">Click ▶ to play</span>
       </div>
     </div>
