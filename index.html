@@ -418,6 +418,34 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
   opacity:0;transition:opacity .35s;border-radius:var(--radius);
 }
 .vid-card:hover::before{opacity:1}
+/* ---------- Payment ---------- */
+#payment{padding:72px 0}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+@media(max-width:768px){.pay-grid{grid-template-columns:1fr}}
+.pay-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}
+.qris-box{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:20px;display:grid;place-items:center;transition:border-color .25s}
+.pay-card:hover .qris-box{border-color:rgba(34,211,238,.4)}
+.qris-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px}
+.qr-icon{font-size:44px}
+.qris-placeholder span{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.pay-label{margin-top:12px;font-size:14px;font-weight:800;color:var(--text)}
+.wallet-list{display:flex;flex-direction:column;gap:10px;text-align:left}
+.wallet{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--text);background:var(--card2);border:1px solid var(--border);border-radius:11px;padding:10px 14px;transition:border-color .2s}
+.wallet:hover{border-color:var(--cyan)}
+.pay-steps{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+.pay-step{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 18px;font-size:13px;font-weight:700;color:var(--text)}
+.pay-num{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff;background:var(--grad);flex-shrink:0}
+.pay-wa{margin-top:28px;text-align:center}
+/* ---------- Research PDF ---------- */
+#research{padding:72px 0;background:var(--bg1);border-block:1px solid var(--border)}
+.research-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:34px 30px;text-align:center;max-width:540px;margin:30px auto 0;transition:transform .25s,border-color .25s,box-shadow .25s}
+.research-card:hover{transform:translateY(-4px);border-color:rgba(52,211,153,.4);box-shadow:0 12px 32px rgba(52,211,153,.15)}
+.research-icon{font-size:48px;margin-bottom:12px}
+.research-card h3{font-size:20px;font-weight:800;margin-bottom:8px}
+.research-card p{color:var(--muted);font-size:14px;margin-bottom:16px;line-height:1.5}
+.research-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.research-size{font-size:12px;font-weight:700;color:var(--muted);background:var(--card2);border:1px solid var(--border);padding:5px 11px;border-radius:999px}
+.research-free{font-size:12px;font-weight:700;color:var(--emerald);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);padding:5px 11px;border-radius:999px}
 /* ================= REVIEWS ================= */
 .reviews{position:relative}
 .reviews-summary{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;flex-wrap:wrap}
@@ -623,6 +651,68 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
   </div>
 </section>
 
+<!-- ================= PAYMENT ================= -->
+<section id="payment" style="background:var(--bg1);border-block:1px solid var(--border)">
+  <div class="container">
+    <div class="eyebrow"><span>💳</span><span data-i18n="eyebrowPayment">Cara Pembayaran</span></div>
+    <h2 class="title" data-i18n="paymentTitle">Metode <span class="g">Pembayaran</span></h2>
+    <p class="sub" data-i18n="paymentSub">Pembayaran mudah dan aman — scan QRIS atau transfer e-wallet.</p>
+    <div class="pay-grid">
+      <div class="pay-card reveal">
+        <div class="qris-box">
+          <div class="qris-placeholder">
+            <span class="qr-icon">📱</span>
+            <span>Scan QRIS</span>
+          </div>
+        </div>
+        <div class="pay-label">QRIS</div>
+      </div>
+      <div class="pay-card reveal">
+        <div class="wallet-list">
+          <div class="wallet"><span>🟢</span> GoPay</div>
+          <div class="wallet"><span>🟡</span> OVO</div>
+          <div class="wallet"><span>🔵</span> Dana</div>
+          <div class="wallet"><span>🟣</span> ShopeePay</div>
+          <div class="wallet"><span>🟠</span> LinkAja</div>
+        </div>
+      </div>
+    </div>
+    <div class="pay-steps">
+      <div class="pay-step reveal"><div class="pay-num">1</div><span data-i18n="payStep1">Transfer Rp 50.000</span></div>
+      <div class="pay-step reveal"><div class="pay-num">2</div><span data-i18n="payStep2">Screenshot bukti transfer</span></div>
+      <div class="pay-step reveal"><div class="pay-num">3</div><span data-i18n="payStep3">Kirim ke WhatsApp</span></div>
+    </div>
+    <div class="pay-wa">
+      <a class="btn btn-wa wa-cta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+        <span data-i18n="payWa">Chat WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH PDF ================= -->
+<section id="research">
+  <div class="container">
+    <div class="eyebrow"><span>📊</span><span data-i18n="eyebrowResearch">Research</span></div>
+    <h2 class="title" data-i18n="researchTitle">Research &amp; Data <span class="g">Linux 50K</span></h2>
+    <p class="sub" data-i18n="researchSub">Data riset resmi perbandingan Linux vs Windows, e-waste, adopsi global.</p>
+    <div class="research-card reveal">
+      <div class="research-icon">📄</div>
+      <h3 data-i18n="researchCardTitle">Research &amp; Data Linux 50K</h3>
+      <p data-i18n="researchDesc">Data riset resmi perbandingan Linux vs Windows, e-waste, adopsi global.</p>
+      <div class="research-meta">
+        <span class="research-size">📄 12 KB</span>
+        <span class="research-free" data-i18n="researchFree">Gratis &amp; bebas disebarluaskan</span>
+      </div>
+      <a class="btn btn-primary" href="linux50k-research.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+        <span data-i18n="researchDl">Download PDF</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= DISTROS ================= -->
 <section id="distros" style="background:var(--bg1);border-block:1px solid var(--border)">
   <div class="container">
@@ -799,6 +889,20 @@ const I18N = {
     eyebrowServices: "Paket Layanan",
     servicesTitle: "Apa yang <span class='g'>Kamu Dapatkan</span>?",
     servicesSub: "Satu harga, lengkap — dari nol sampai laptop siap dipakai harian.",
+    eyebrowPayment: "Cara Pembayaran",
+    paymentTitle: "Metode <span class='g'>Pembayaran</span>",
+    paymentSub: "Pembayaran mudah dan aman — scan QRIS atau transfer e-wallet.",
+    payStep1: "Transfer Rp 50.000",
+    payStep2: "Screenshot bukti transfer",
+    payStep3: "Kirim ke WhatsApp",
+    payWa: "Chat WhatsApp",
+    eyebrowResearch: "Research",
+    researchTitle: "Research & Data <span class='g'>Linux 50K</span>",
+    researchSub: "Data riset resmi perbandingan Linux vs Windows, e-waste, adopsi global.",
+    researchCardTitle: "Research & Data Linux 50K",
+    researchDesc: "Data riset resmi perbandingan Linux vs Windows, e-waste, adopsi global.",
+    researchFree: "Gratis & bebas disebarluaskan",
+    researchDl: "Download PDF",
     services: [
       { ic: "🐧", title: "Instalasi Linux", desc: "MX Linux, Linux Mint, atau Zorin OS dipasang sesuai pilihan & spesifikasi laptopmu.", tags: ["MX", "Mint", "Zorin"] },
       { ic: "🔀", title: "Dual Boot atau Full", desc: "Pilih tetap pakai Windows atau hapus total. Kami atur partisi dengan aman tanpa kehilangan data.", tags: ["Dual Boot", "Full Install", "hot"] },
@@ -969,6 +1073,20 @@ const I18N = {
     eyebrowServices: "Service Package",
     servicesTitle: "What <span class='g'>You Get</span>?",
     servicesSub: "One price, complete — from zero to a daily-ready laptop.",
+    eyebrowPayment: "Payment Methods",
+    paymentTitle: "Payment <span class='g'>Methods</span>",
+    paymentSub: "Easy and secure payment — scan QRIS or transfer via e-wallet.",
+    payStep1: "Transfer Rp 50.000",
+    payStep2: "Screenshot proof of transfer",
+    payStep3: "Send to WhatsApp",
+    payWa: "Chat WhatsApp",
+    eyebrowResearch: "Research",
+    researchTitle: "Research & Data <span class='g'>Linux 50K</span>",
+    researchSub: "Official research data comparing Linux vs Windows, e-waste, global adoption.",
+    researchCardTitle: "Research & Data Linux 50K",
+    researchDesc: "Official research data comparing Linux vs Windows, e-waste, global adoption.",
+    researchFree: "Free & freely distributable",
+    researchDl: "Download PDF",
     services: [
       { ic: "🐧", title: "Linux Installation", desc: "MX Linux, Linux Mint, or Zorin OS installed to match your choice and laptop specs.", tags: ["MX", "Mint", "Zorin"] },
       { ic: "🔀", title: "Dual Boot or Full", desc: "Keep Windows or erase it completely. We partition safely without losing data.", tags: ["Dual Boot", "Full Install", "hot"] },
@@ -1139,6 +1257,20 @@ const I18N = {
     eyebrowServices: "Leistungspaket",
     servicesTitle: "Was <span class='g'>Du bekommst</span>?",
     servicesSub: "Ein Preis, alles dabei — vom Nullpunkt bis zum einsatzbereiten Laptop.",
+    eyebrowPayment: "Zahlungsmethoden",
+    paymentTitle: "Zahlungs<span class='g'>methoden</span>",
+    paymentSub: "Einfache und sichere Zahlung — QRIS scannen oder E-Wallet-Überweisung.",
+    payStep1: "Überweise Rp 50.000",
+    payStep2: "Screenshot der Überweisung",
+    payStep3: "An WhatsApp senden",
+    payWa: "WhatsApp-Nachricht",
+    eyebrowResearch: "Forschung",
+    researchTitle: "Forschung & Daten <span class='g'>Linux 50K</span>",
+    researchSub: "Offizielle Forschungsdaten: Linux vs Windows, E-Waste, globale Adoption.",
+    researchCardTitle: "Forschung & Daten Linux 50K",
+    researchDesc: "Offizielle Forschungsdaten: Linux vs Windows, E-Waste, globale Adoption.",
+    researchFree: "Kostenlos & frei verbreitbar",
+    researchDl: "PDF herunterladen",
     services: [
       { ic: "🐧", title: "Linux-Installation", desc: "MX Linux, Linux Mint oder Zorin OS — passend zu deiner Wahl und deinen Specs.", tags: ["MX", "Mint", "Zorin"] },
       { ic: "🔀", title: "Dual-Boot oder Voll", desc: "Windows behalten oder komplett löschen. Partitionen sicher, ohne Datenverlust.", tags: ["Dual-Boot", "Voll", "hot"] },
