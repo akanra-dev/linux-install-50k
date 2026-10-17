@@ -471,12 +471,94 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
 .review-empty p{font-size:13.5px}
 
 
+
+/* ============================================================
+   FUTURE LAYER 2.0 — aurora · spotlight · neon · magnetic
+   ============================================================ */
+:root{--mx:50%;--my:50%}
+
+/* global aurora backdrop */
+.aurora{
+  position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(38% 38% at 16% 20%,rgba(99,102,241,.30),transparent 62%),
+    radial-gradient(34% 34% at 84% 16%,rgba(34,211,238,.22),transparent 62%),
+    radial-gradient(42% 42% at 70% 84%,rgba(139,92,246,.26),transparent 64%),
+    radial-gradient(34% 34% at 22% 88%,rgba(52,211,153,.16),transparent 62%);
+  filter:blur(46px) saturate(1.2);
+  animation:auroraDrift 30s ease-in-out infinite alternate;
+  will-change:transform;
+}
+@keyframes auroraDrift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(3%,-2.5%,0) scale(1.12)}
+  100%{transform:translate3d(-3%,2.5%,0) scale(1.06)}
+}
+/* glass alternating sections so the aurora glows through */
+section[style*="var(--bg1)"]{background:rgba(9,13,26,.55)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.videos,.trust-strip{background:rgba(9,13,26,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+
+/* animated gradient text */
+.hero h1 .g,h2.title .g{
+  background:linear-gradient(120deg,#6366f1,#8b5cf6,#22d3ee,#34d399,#6366f1);
+  background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:gradFlow 9s linear infinite;
+}
+@keyframes gradFlow{to{background-position:260% 50%}}
+
+/* cursor spotlight on surfaces */
+.card,.faq-item,.check-item,.step,.review-card,.hero-card,.price-tag,.table-wrap{
+  background-image:radial-gradient(340px circle at var(--mx) var(--my),rgba(122,132,255,.14),transparent 62%);
+}
+
+/* neon conic ring on hero card */
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.hero-card{position:relative}
+.hero-card::before{
+  content:"";position:absolute;inset:-1.5px;border-radius:24px;z-index:-1;
+  background:conic-gradient(from var(--ang),#6366f1,#22d3ee,#8b5cf6,#34d399,#6366f1);
+  filter:blur(7px);opacity:.5;animation:spinRing 9s linear infinite;
+}
+@keyframes spinRing{to{--ang:360deg}}
+
+/* glassier glow buttons */
+.btn-primary,.btn-wa{box-shadow:0 8px 26px rgba(99,102,241,.35),inset 0 0 0 1px rgba(255,255,255,.04)}
+.btn-primary:hover{box-shadow:0 0 26px rgba(139,92,246,.55),0 14px 34px rgba(99,102,241,.4)}
+.btn-ghost:hover{box-shadow:0 0 22px rgba(34,211,238,.25)}
+
+/* soft eyebrow glow */
+.eyebrow{box-shadow:0 0 22px rgba(34,211,238,.12)}
+
+/* smoother reveal with blur + scale */
+.reveal,.vid-card.reveal{opacity:0;transform:translateY(30px) scale(.985);filter:blur(7px);
+  transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1),filter .85s ease}
+.reveal.in,.vid-card.reveal.in{opacity:1;transform:none;filter:none}
+.vid-card.reveal{transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1),filter .8s ease,border-color .35s,box-shadow .35s}
+
+/* hero particle constellation */
+.hero-particles{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.6}
+
+@media(max-width:640px){
+  .aurora{filter:blur(34px) saturate(1.1)}
+  section[style*="var(--bg1)"],.videos,.trust-strip{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .hero-particles{opacity:.4}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .aurora{display:none}
+  .hero-particles{display:none}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.vid-card.reveal{opacity:1;transform:none;filter:none}
+}
+
 </style>
 </head>
 <body>
 
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="cursor-glow" id="cursorGlow"></div>
+<div class="aurora" aria-hidden="true"></div>
 
 <!-- ================= NAVBAR ================= -->
 <nav>
@@ -513,6 +595,7 @@ footer .footer-link:hover{border-color:var(--cyan);background:rgba(34,211,238,.1
   <div class="blob blob-a"></div>
   <div class="blob blob-b"></div>
   <div class="blob blob-c"></div>
+  <canvas class="hero-particles" id="heroParticles" aria-hidden="true"></canvas>
   <div class="container hero-grid">
     <div>
       <div class="hero-badge">
@@ -1531,12 +1614,106 @@ function initToTop(){
   b.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
+
+/* ---------- premium motion: spotlight, magnetic, particles, parallax ---------- */
+function initSpotlight(){
+  const sel = ".card,.faq-item,.check-item,.step,.review-card,.hero-card,.price-tag,.table-wrap";
+  let raf = 0;
+  document.addEventListener("mousemove", e => {
+    const t = e.target;
+    const el = t && t.closest ? t.closest(sel) : null;
+    if(!el || raf) return;
+    raf = requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%");
+      el.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%");
+      raf = 0;
+    });
+  }, { passive: true });
+}
+function initMagnetic(){
+  if(window.matchMedia("(hover:none)").matches) return;
+  $$(".btn").forEach(btn => {
+    btn.addEventListener("mousemove", e => {
+      const r = btn.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+      const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+      btn.style.transform = "translate(" + (dx * 8).toFixed(2) + "px," + (dy * 6 - 2).toFixed(2) + "px)";
+    });
+    btn.addEventListener("mouseleave", () => { btn.style.transform = ""; });
+  });
+}
+function initParticles(){
+  const cv = $("#heroParticles");
+  if(!cv || !cv.getContext) return;
+  const ctx = cv.getContext("2d");
+  if(!ctx) return;
+  let w = 0, h = 0, pts = [], raf = 0;
+  const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function size(){
+    const r = (cv.parentElement || cv).getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.max(24, Math.min(72, Math.round(w * h / 16000)));
+    pts = Array.from({ length: n }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28,
+      r: Math.random() * 1.6 + .6
+    }));
+  }
+  function frame(animate){
+    ctx.clearRect(0, 0, w, h);
+    for(let i = 0; i < pts.length; i++){
+      const p = pts[i];
+      if(animate){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 0 || p.x > w) p.vx *= -1;
+        if(p.y < 0 || p.y > h) p.vy *= -1;
+      }
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+      ctx.fillStyle = "rgba(148,163,184,.55)"; ctx.fill();
+      for(let j = i + 1; j < pts.length; j++){
+        const q = pts[j], dx = p.x - q.x, dy = p.y - q.y, d2 = dx * dx + dy * dy;
+        if(d2 < 15000){
+          ctx.strokeStyle = "rgba(99,102,241," + ((1 - d2 / 15000) * .35).toFixed(3) + ")";
+          ctx.lineWidth = .6;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+        }
+      }
+    }
+  }
+  function loop(){ frame(true); raf = requestAnimationFrame(loop); }
+  size();
+  if(reduce){ frame(false); }
+  else { loop(); window.addEventListener("resize", size, { passive: true }); }
+}
+function initParallax(){
+  if(window.matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+  const blobs = $$(".blob");
+  if(!blobs.length) return;
+  let raf = 0;
+  window.addEventListener("scroll", () => {
+    if(raf) return;
+    raf = requestAnimationFrame(() => {
+      const y = window.scrollY || 0;
+      blobs.forEach((b, i) => { b.style.marginTop = (y * (0.05 + i * 0.03)).toFixed(1) + "px"; });
+      raf = 0;
+    });
+  }, { passive: true });
+}
+
 /* ---------- boot ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initCursorGlow();
   initTilt();
   initToTop();
+  initSpotlight();
+  initMagnetic();
+  initParticles();
+  initParallax();
   $$("#langPills button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
   setLang("id");
   initReveal();
