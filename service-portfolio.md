@@ -59,7 +59,7 @@ Measured on a **legacy ASUS laptop (Intel Core i3, 4 GB RAM, HDD)**, Maumere, 20
 > dan tidak pernah bermasalah. Dulu sering lemot dan berisik, sekarang
 > langsung nyala dan semua berjalan mulus. Benar-benar tanpa repot."*
 >
-> — **Bapak, Maumere** (primary client, daily-driver user)
+> — **Klien utama, Maumere** (daily-driver user)
 
 ---
 

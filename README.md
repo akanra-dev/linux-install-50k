@@ -56,7 +56,7 @@ Pengembang / SysAdmin: **Theresa Pogon (akanra-dev)**
 | **Suhu CPU & Kipas** | Panas & Kipas Berisik | Adem & Hening |
 | **Ketahanan Keamanan** | *(data menyusul)* | *(data menyusul)* |
 
-#### 📸 Dokumentasi Laptop Asus A416J Bapak
+#### 📸 Dokumentasi Laptop Asus A416J
 
 ![Screenshot](huh.jpg)
 
